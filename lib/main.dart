@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/burhanrashid/android_activity_like.dart';
+import 'package:my_first_flutter/burhanrashid/android_framelayout_like.dart';
+import 'package:my_first_flutter/burhanrashid/android_linearlayout_like.dart';
 import 'package:my_first_flutter/list_page.dart';
 import 'package:my_first_flutter/my_animate_page.dart';
 import 'package:my_first_flutter/my_home_page.dart';
@@ -53,6 +56,9 @@ class MyApp extends StatelessWidget {
         '/animatePage': (context) => AnimatePage(),
         '/alphaPage': (context) => AlphaAnimation(),
         '/scalePage': (context) => ScaleAnimation(),
+        '/activityLike': (context) => const AndroidActivityLikePage(),
+        '/linearLayoutLike': (context) => AndroidLinearLayoutLikePage(),
+        '/frameLayoutLike': (context) => AndroidFrameLayoutLikePage(),
       },
     );
   }

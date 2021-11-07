@@ -42,7 +42,7 @@ class MyHomePage2State extends State<MyHomePage2> {
         title: Text('我是Title'),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Text(msg),
             FlatButton(
@@ -109,6 +109,21 @@ class MyHomePage2State extends State<MyHomePage2> {
                   Navigator.pushNamed(context, '/animatePage');
                 },
                 child: const Text('Jump to AnimatePage')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/activityLike');
+                },
+                child: const Text('Jump to ActivityLikePage')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/linearLayoutLike');
+                },
+                child: const Text('Jump to LinearLayoutLikePage')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/frameLayoutLike');
+                },
+                child: const Text('Jump to FrameLayoutLikePage')),
           ],
         ),
       ),

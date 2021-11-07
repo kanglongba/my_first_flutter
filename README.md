@@ -20,3 +20,6 @@ mobile development, and a full API reference.
 1. [Dart 速查表](https://dart.cn/codelabs/dart-cheatsheet)
 2. [《Flutter实战·第二版》](https://book.flutterchina.club/preface.html)
 3. [轻松Flutter入门，秒变大前端](https://km.woa.com/group/34294/articles/show/400545#5.1)
+4. [Flutter For Android Developers : How to design Activity UI in Flutter](https://burhanrashid52.medium.com/flutter-for-android-developers-how-to-design-activity-ui-in-flutter-4bf7b0de1e48)
+5. [Flutter For Android Developers : How to design LinearLayout in Flutter](https://burhanrashid52.com/2018/06/26/flutter-for-android-developers-how-to-design-linearlayout-in-flutter/)
+6. [Flutter For Android Developers : How to design FrameLayout in Flutter](https://medium.com/flutter-community/flutter-for-android-developers-how-to-design-framelayout-in-flutter-93a19fc7e7a6)
