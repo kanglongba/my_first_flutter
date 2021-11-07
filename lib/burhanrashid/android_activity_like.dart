@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+/// 系列Github：https://github.com/burhanrashid52/FlutterForAndroidExample/tree/master/lib
 class AndroidActivityLikePage extends StatelessWidget {
   const AndroidActivityLikePage({Key? key}) : super(key: key);
 
