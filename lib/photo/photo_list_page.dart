@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/photo/photo_list_response.dart';
+import 'package:my_first_flutter/photo/wall_paper_response.dart';
 
 import 'api_request_utils.dart';
 
+/// 调试flutter应用：https://flutter.cn/docs/testing/oem-debuggers
 /// 教你上拉加载：https://www.kindacode.com/article/flutter-listview-pagination-load-more/
 /// 创建拥有不同列表项的列表：https://flutter.cn/docs/cookbook/lists/mixed-list
 class AlbumPage extends StatefulWidget {
   @override
   State createState() {
-    return AlbumStateList();
+    return AlbumStateSimple();
   }
 }
 
@@ -188,11 +190,14 @@ class AlbumStateList extends State<AlbumPage> {
 /// https://flutter.cn/docs/cookbook/networking/fetch-data
 class AlbumStateSimple extends State<AlbumPage> {
   late Future<AlbumResponse> albumFuture;
+  late WallPaper wallPaper;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
     albumFuture = fetchAlbum(page: 1);
+    refreshWallPaper();
   }
 
   @override
@@ -202,26 +207,56 @@ class AlbumStateSimple extends State<AlbumPage> {
         title: const Text('相册'),
       ),
       body: Center(
-        child: FutureBuilder<AlbumResponse>(
-          future: albumFuture,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              if (snapshot.data?.code == 1) {
-                if (snapshot.data?.data != null &&
-                    snapshot.data!.data!.isNotEmpty) {
-                  return Image.network(snapshot.data!.data!.first.cover!);
-                } else {
-                  return const Text('没有相片');
-                }
-              } else {
-                var title = snapshot.data?.msg ?? 'Error';
-                return Text(title);
-              }
-            }
-            return const CircularProgressIndicator();
-          },
-        ),
+        child: createWallPaper(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _isLoading = true;
+          });
+          refreshWallPaper();
+        },
+        child: const Icon(Icons.refresh),
       ),
     );
+  }
+
+  Widget createAlbum() {
+    return FutureBuilder<AlbumResponse>(
+        future: albumFuture,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data?.code == 1) {
+              if (snapshot.data?.data != null &&
+                  snapshot.data!.data!.isNotEmpty) {
+                return Image.network(snapshot.data!.data!.first.cover!);
+              } else {
+                return const Text('没有相片');
+              }
+            } else {
+              var title = snapshot.data?.msg ?? 'Error';
+              return Text(title);
+            }
+          }
+          return const CircularProgressIndicator();
+        });
+  }
+
+  Widget createWallPaper() {
+    if (_isLoading) {
+      return const CircularProgressIndicator();
+    }
+    if (wallPaper.url.isNotEmpty) {
+      return Image.network(wallPaper.url);
+    } else {
+      return Image.memory(wallPaper.bytes);
+    }
+  }
+
+  void refreshWallPaper() async {
+    wallPaper = await fetchWallPaper();
+    setState(() {
+      _isLoading = false;
+    });
   }
 }
