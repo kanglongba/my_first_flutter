@@ -23,3 +23,4 @@ mobile development, and a full API reference.
 4. [Flutter For Android Developers : How to design Activity UI in Flutter](https://burhanrashid52.medium.com/flutter-for-android-developers-how-to-design-activity-ui-in-flutter-4bf7b0de1e48)
 5. [Flutter For Android Developers : How to design LinearLayout in Flutter](https://burhanrashid52.com/2018/06/26/flutter-for-android-developers-how-to-design-linearlayout-in-flutter/)
 6. [Flutter For Android Developers : How to design FrameLayout in Flutter](https://medium.com/flutter-community/flutter-for-android-developers-how-to-design-framelayout-in-flutter-93a19fc7e7a6)
+7. [使用原生的调试器调试Flutter应用](https://flutter.cn/docs/testing/oem-debuggers)

@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_first_flutter/photo/photo_list_response.dart';
 import 'package:my_first_flutter/photo/wall_paper_response.dart';
 
 import 'api_request_utils.dart';
 
-/// 调试flutter应用：https://flutter.cn/docs/testing/oem-debuggers
-/// 教你上拉加载：https://www.kindacode.com/article/flutter-listview-pagination-load-more/
-/// 创建拥有不同列表项的列表：https://flutter.cn/docs/cookbook/lists/mixed-list
 class AlbumPage extends StatefulWidget {
   @override
   State createState() {
-    return AlbumStateSimple();
+    return WallPaperState();
+    // return AlbumState();
   }
 }
 
-class AlbumStateList extends State<AlbumPage> {
+/// 调用相册接口，显示相册，具有下载刷新和上拉加载功能
+/// 教你上拉加载：https://www.kindacode.com/article/flutter-listview-pagination-load-more/
+/// 创建拥有不同列表项的列表：https://flutter.cn/docs/cookbook/lists/mixed-list
+class AlbumState extends State<AlbumPage> {
   int pageIndex = 1;
   List<Photo> photoList = [];
   late ScrollController _controller;
@@ -186,12 +188,12 @@ class AlbumStateList extends State<AlbumPage> {
   }
 }
 
-/// Flutter 提供的 FutureBuilder 组件，专门用来处理异步数据源
-/// https://flutter.cn/docs/cookbook/networking/fetch-data
-class AlbumStateSimple extends State<AlbumPage> {
+/// 调用壁纸接口，显示壁纸，一次仅显示一张
+class WallPaperState extends State<AlbumPage> {
   late Future<AlbumResponse> albumFuture;
   late WallPaper wallPaper;
   bool _isLoading = true;
+  WallPaperSource source = WallPaperSource.old;
 
   @override
   void initState() {
@@ -205,6 +207,38 @@ class AlbumStateSimple extends State<AlbumPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('相册'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Fluttertoast.showToast(msg: '切换2014年网红');
+                setState(() {
+                  _isLoading = true;
+                });
+                source = WallPaperSource.old;
+                refreshWallPaper();
+              },
+              icon: const Icon(Icons.shopping_cart)),
+          IconButton(
+              onPressed: () {
+                Fluttertoast.showToast(msg: '切换当代网红');
+                setState(() {
+                  _isLoading = true;
+                });
+                source = WallPaperSource.current;
+                refreshWallPaper();
+              },
+              icon: const Icon(Icons.monetization_on)),
+          IconButton(
+              onPressed: () {
+                Fluttertoast.showToast(msg: '切换蓓蓓梅');
+                setState(() {
+                  _isLoading = true;
+                });
+                source = WallPaperSource.beibei;
+                refreshWallPaper();
+              },
+              icon: const Icon(Icons.phone_android)),
+        ],
       ),
       body: Center(
         child: createWallPaper(),
@@ -221,6 +255,8 @@ class AlbumStateSimple extends State<AlbumPage> {
     );
   }
 
+  ///教你用 Flutter 提供的 FutureBuilder 组件，专门用来处理异步数据源
+  ///https://flutter.cn/docs/cookbook/networking/fetch-data
   Widget createAlbum() {
     return FutureBuilder<AlbumResponse>(
         future: albumFuture,
@@ -242,6 +278,7 @@ class AlbumStateSimple extends State<AlbumPage> {
         });
   }
 
+  ///自己实现异步加载数据
   Widget createWallPaper() {
     if (_isLoading) {
       return const CircularProgressIndicator();
@@ -254,9 +291,20 @@ class AlbumStateSimple extends State<AlbumPage> {
   }
 
   void refreshWallPaper() async {
-    wallPaper = await fetchWallPaper();
+    wallPaper = await fetchWallPaper(getUrl());
     setState(() {
       _isLoading = false;
     });
+  }
+
+  String getUrl() {
+    switch (source) {
+      case WallPaperSource.old:
+        return mm;
+      case WallPaperSource.current:
+        return mmnew;
+      case WallPaperSource.beibei:
+        return mmbeibei;
+    }
   }
 }

@@ -10,3 +10,9 @@ class WallPaper {
 
   WallPaper.url(this.url) : bytes = Uint8List(0);
 }
+
+enum WallPaperSource {
+  old,
+  current,
+  beibei,
+}

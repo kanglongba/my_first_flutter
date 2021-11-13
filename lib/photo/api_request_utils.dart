@@ -26,21 +26,21 @@ Future<AlbumResponse> fetchAlbum({required int page}) async {
 }
 
 /// mm、mmnew、mmbeibei 三个接口直接返回了图片文件，设置header也没用
-/// 接口直接返回二进制图片
+/// 读取接口直接返回的二进制图片
 /// 1.https://stackoverflow.com/questions/59894880/how-to-get-a-uint8list-from-a-network-image-by-url-in-flutter
 /// 2.https://stackoverflow.com/questions/53182480/how-to-get-a-flutter-uint8list-from-a-network-image
 /// 3.https://www.jianshu.com/p/609081364415
-/// 以上这三篇文章，都不管用
+/// 经过验证，以上这三篇文章，都不管用
 /// 1.Dart - Create HTTP Request Examples ：https://www.woolha.com/tutorials/dart-create-http-request-examples
-Future<WallPaper> fetchWallPaper() async {
+Future<WallPaper> fetchWallPaper(String url) async {
   Map<String, String> requestHeaders = {
     HttpHeaders.contentTypeHeader: 'application/json',
     HttpHeaders.acceptHeader: 'application/json',
   };
   try {
     http.Response response = await http
-        .get(Uri.parse(mm), headers: requestHeaders)
-        .timeout(const Duration(seconds: 2));
+        .get(Uri.parse(url), headers: requestHeaders)
+        .timeout(const Duration(seconds: 3));
     if (response.statusCode == 200) {
       return WallPaper.bytes(response.bodyBytes);
     } else {
