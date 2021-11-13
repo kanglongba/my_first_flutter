@@ -124,6 +124,11 @@ class MyHomePage2State extends State<MyHomePage2> {
                   Navigator.pushNamed(context, '/frameLayoutLike');
                 },
                 child: const Text('Jump to FrameLayoutLikePage')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/albumPage');
+                },
+                child: const Text('Jump to AlbumPage')),
           ],
         ),
       ),

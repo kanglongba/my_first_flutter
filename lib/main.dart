@@ -6,6 +6,7 @@ import 'package:my_first_flutter/list_page.dart';
 import 'package:my_first_flutter/my_animate_page.dart';
 import 'package:my_first_flutter/my_home_page.dart';
 import 'package:my_first_flutter/my_layout_page.dart';
+import 'package:my_first_flutter/photo/photo_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         '/activityLike': (context) => const AndroidActivityLikePage(),
         '/linearLayoutLike': (context) => AndroidLinearLayoutLikePage(),
         '/frameLayoutLike': (context) => AndroidFrameLayoutLikePage(),
+        '/albumPage': (context) => AlbumPage(),
       },
     );
   }
