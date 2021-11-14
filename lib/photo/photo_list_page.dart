@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_first_flutter/photo/photo_list_response.dart';
 import 'package:my_first_flutter/photo/wall_paper_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api_request_utils.dart';
 
 class AlbumPage extends StatefulWidget {
   @override
   State createState() {
-    return WallPaperState();
-    // return AlbumState();
+    // return WallPaperState();
+    return AlbumState();
   }
 }
 
@@ -20,25 +21,25 @@ class AlbumState extends State<AlbumPage> {
   int pageIndex = 1;
   List<Photo> photoList = [];
   late ScrollController _controller;
-  late void Function() _scrollListener;
+  late void Function() _scrollListener1;
   ALBUM_STATUS_TYPE status = ALBUM_STATUS_TYPE.init;
 
   @override
   void initState() {
     super.initState();
-    _scrollListener = () {
+    _scrollListener1 = () {
       // 1.滑动到底部时，触发加载更多
       if (_controller.position.pixels == _controller.position.maxScrollExtent) {
         _loadMore();
       }
     };
-    _controller = ScrollController()..addListener(_scrollListener1);
+    _controller = ScrollController()..addListener(_scrollListener2);
     _refresh();
   }
 
   /// 加载更多的条件：https://stackoverflow.com/questions/49508322/flutter-listview-lazy-loading
-  /// 2.提前加载更多
-  void _scrollListener1() {
+  /// 2.还没不到底部时，提前加载更多
+  void _scrollListener2() {
     if (_controller.position.extentAfter < 200) {
       _loadMore();
     }
@@ -190,16 +191,25 @@ class AlbumState extends State<AlbumPage> {
 
 /// 调用壁纸接口，显示壁纸，一次仅显示一张
 class WallPaperState extends State<AlbumPage> {
+  static const wallPaperSourceKey = 'wallPaperSource';
   late Future<AlbumResponse> albumFuture;
   late WallPaper wallPaper;
   bool _isLoading = true;
-  WallPaperSource source = WallPaperSource.old;
+  late WallPaperSource source;
 
   @override
   void initState() {
     super.initState();
     albumFuture = fetchAlbum(page: 1);
-    refreshWallPaper();
+    getWallPaperSource().then((value) {
+      source = value;
+      refreshWallPaper();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -216,6 +226,7 @@ class WallPaperState extends State<AlbumPage> {
                 });
                 source = WallPaperSource.old;
                 refreshWallPaper();
+                saveWallPaperSource();
               },
               icon: const Icon(Icons.shopping_cart)),
           IconButton(
@@ -226,6 +237,7 @@ class WallPaperState extends State<AlbumPage> {
                 });
                 source = WallPaperSource.current;
                 refreshWallPaper();
+                saveWallPaperSource();
               },
               icon: const Icon(Icons.monetization_on)),
           IconButton(
@@ -236,6 +248,7 @@ class WallPaperState extends State<AlbumPage> {
                 });
                 source = WallPaperSource.beibei;
                 refreshWallPaper();
+                saveWallPaperSource();
               },
               icon: const Icon(Icons.phone_android)),
         ],
@@ -306,5 +319,38 @@ class WallPaperState extends State<AlbumPage> {
       case WallPaperSource.beibei:
         return mmbeibei;
     }
+  }
+
+  Future<WallPaperSource> getWallPaperSource() async {
+    //建立文件缓存
+    final prefs = await SharedPreferences.getInstance();
+    String paperSource = prefs.getString(wallPaperSourceKey) ?? 'old';
+    switch (paperSource) {
+      case 'old':
+        return WallPaperSource.old;
+      case 'current':
+        return WallPaperSource.current;
+      case 'beibei':
+        return WallPaperSource.beibei;
+      default:
+        return WallPaperSource.old;
+    }
+  }
+
+  Future<void> saveWallPaperSource() async {
+    //建立文件缓存
+    final prefs = await SharedPreferences.getInstance();
+    String getSourceName() {
+      switch (source) {
+        case WallPaperSource.old:
+          return 'old';
+        case WallPaperSource.current:
+          return 'current';
+        case WallPaperSource.beibei:
+          return 'beibei';
+      }
+    }
+
+    prefs.setString(wallPaperSourceKey, getSourceName());
   }
 }
