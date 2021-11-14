@@ -207,9 +207,12 @@ class WallPaperState extends State<AlbumPage> {
     });
   }
 
+  /// 页面声明周期：https://www.jianshu.com/p/0b41871ff8d9
   @override
   void dispose() {
     super.dispose();
+    //保存配置到SharedPreferences中
+    saveWallPaperSource();
   }
 
   @override
@@ -226,7 +229,6 @@ class WallPaperState extends State<AlbumPage> {
                 });
                 source = WallPaperSource.old;
                 refreshWallPaper();
-                saveWallPaperSource();
               },
               icon: const Icon(Icons.shopping_cart)),
           IconButton(
@@ -237,7 +239,6 @@ class WallPaperState extends State<AlbumPage> {
                 });
                 source = WallPaperSource.current;
                 refreshWallPaper();
-                saveWallPaperSource();
               },
               icon: const Icon(Icons.monetization_on)),
           IconButton(
@@ -248,7 +249,6 @@ class WallPaperState extends State<AlbumPage> {
                 });
                 source = WallPaperSource.beibei;
                 refreshWallPaper();
-                saveWallPaperSource();
               },
               icon: const Icon(Icons.phone_android)),
         ],
