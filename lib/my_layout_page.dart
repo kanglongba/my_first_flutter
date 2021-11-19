@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 /// 1.[Flutter 基础 | 控件 & 布局（一）](https://juejin.cn/post/7030569229459914766)
 /// 2.[Flutter 9种布局组件](https://juejin.cn/post/6919653632468221966)
+///
+/// 1.Flutter 中控件尺寸不由其自身决定的，而是由它的父控件。
+/// 2.父控件总是会施加一个约束给孩子，这个约束会决定孩子宽高的取值范围以及相对位置。
 class MyLayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,8 @@ class MyLayoutPage extends StatelessWidget {
       body: GridView.count(
         primary: false,
         scrollDirection: Axis.vertical,
-        crossAxisCount: 3, //交叉轴子widget的个数
+        crossAxisCount: 3,
+        //交叉轴子widget的个数
         padding: EdgeInsets.all(5),
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
@@ -86,7 +90,12 @@ class MyLayoutPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/sizedboxPage');
               },
-              child: Text('尺寸限制容器布局')),
+              child: Text('尺寸限制容器')),
+          OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/flexiblePage');
+              },
+              child: Text('弹性容器')),
         ],
       ),
     );
@@ -276,11 +285,11 @@ class StackLayoutPage extends StatelessWidget {
         child: Stack(
           // 子Widget的对其方式，分为使用了Positioned和未使用Positioned定义两种情况
           alignment: AlignmentDirectional.topStart,
-          // 用来决定没有Positioned方式时候子Widget的大小，StackFit.loose 指的是子Widget 多大就多大，StackFit.expand使子Widget的大小和父组件一样大
+          // 用来决定没有Positioned方式时候子Widget的大小，StackFit.loose 指的是子Widget 多大就多大，
+          // StackFit.expand使子Widget的大小和父组件一样大
           fit: StackFit.loose,
           // 指子Widget 超出Stack时候如何显示，默认为Clip.hardEdge，表示会被裁剪
           clipBehavior: Clip.hardEdge,
-
           children: [
             Image.network(
                 'https://pic1.zhimg.com/v2-4e5d508698f3fd4f3313dd33e3a02dcd_r.jpg'),
@@ -607,6 +616,131 @@ class SizedBoxLayoutPage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// 控制Row、Column、Flex等子组件如何布局的组件
+/// Flexible中 fit 参数表示填满剩余空间的方式，说明如下：
+/// 1.tight：必须（强制）填满剩余空间。
+/// 2.loose：尽可能大的填满剩余空间，但是可以不填满
+///
+/// Expended继承自Flexible，fit = tight.
+///
+/// Spacer 通过 Expanded 实现，和Expanded的区别是：Expanded 可以设置子控件，而 Spacer 的子
+/// 控件尺寸是0，因此Spacer适用于撑开 Row、Column、Flex 的子控件的空隙，
+class FlexiblePageLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flexible'),
+      ),
+      body: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+              ),
+              Flexible(
+                fit: FlexFit.loose,
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue,
+                  height: 100,
+                  child: Text(
+                    'Flexible loose',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.yellow,
+                width: 100,
+                height: 100,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+              ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue,
+                  height: 100,
+                  child: Text(
+                    'Expanded',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.yellow,
+                width: 100,
+                height: 100,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+              ),
+              Spacer(
+                flex: 2,
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.blue,
+                  height: 100,
+                  child: Text(
+                    'Spacer',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+              Spacer(
+                flex: 1,
+              ),
+              Container(
+                color: Colors.yellow,
+                width: 100,
+                height: 100,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
