@@ -9,7 +9,13 @@ class MyLayoutPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('MyLayoutPage'),
       ),
-      body: Column(
+      body: GridView.count(
+        primary: false,
+        scrollDirection: Axis.vertical,
+        crossAxisCount: 3, //交叉轴子widget的个数
+        padding: EdgeInsets.all(5),
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
         children: [
           OutlinedButton(
               onPressed: () {
