@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import 'official_guide_model.dart';
 
 class MyAppBar extends StatelessWidget {
   final String _title;
@@ -53,6 +57,235 @@ class MyScaffold extends StatelessWidget {
           Expanded(child: body),
         ],
       ),
+    );
+  }
+}
+
+/// 名片
+/// codelab的练习作业：https://flutter.cn/docs/codelabs/layout-basics#putting-it-all-together
+class MyBusinessCard extends StatelessWidget {
+  final PersonCard personCard;
+
+  const MyBusinessCard({Key? key, required this.personCard}) : super(key: key);
+
+  void exchange(PersonCard personCard) {
+    Fluttertoast.showToast(msg: '交换名片：${personCard.name}');
+  }
+
+  void schedule(PersonCard personCard) {
+    Fluttertoast.showToast(msg: '日程');
+  }
+
+  void androidPhone(PersonCard personCard) {
+    Fluttertoast.showToast(msg: '拨打手机');
+  }
+
+  void applePhone(PersonCard personCard) {
+    Fluttertoast.showToast(msg: '拨打座机');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: Colors.amberAccent),
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: const [
+          //卡片阴影
+          BoxShadow(
+              color: Colors.black54, offset: Offset(2.0, 2.0), blurRadius: 4.0)
+        ],
+        color: Colors.white,
+        shape: BoxShape.rectangle,
+        gradient: const RadialGradient(
+            //背景径向渐变
+            colors: [Colors.orangeAccent, Colors.limeAccent],
+            center: Alignment.topLeft,
+            radius: .98),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      margin: const EdgeInsets.all(5),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PersonMainInfoWidget(
+            personCard: personCard,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          PersonSecondaryInfoWidget(
+            personCard: personCard,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          PersonActionWidget(
+            personCard: personCard,
+            exchange: exchange,
+            schedule: schedule,
+            phone: androidPhone,
+            landline: applePhone,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PersonMainInfoWidget extends StatelessWidget {
+  final PersonCard personCard;
+
+  const PersonMainInfoWidget({Key? key, required this.personCard})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 15, top: 5),
+          child: CircleAvatar(
+            backgroundImage: AssetImage(personCard.avatar),
+            backgroundColor: Colors.transparent,
+            maxRadius: 32,
+            minRadius: 30,
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              personCard.name,
+              style: const TextStyle(
+                fontSize: 25,
+                color: Colors.black87,
+              ),
+            ),
+            Text(
+              personCard.profession,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.black54,
+              ),
+            )
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class PersonSecondaryInfoWidget extends StatelessWidget {
+  final PersonCard personCard;
+
+  const PersonSecondaryInfoWidget({Key? key, required this.personCard})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      textBaseline: TextBaseline.alphabetic,
+      children: [
+        Text(
+          personCard.address,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.black54,
+          ),
+        ),
+        const Spacer(
+          flex: 1,
+        ),
+        Text(
+          personCard.phoneNo,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.black54,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PersonActionWidget extends StatelessWidget {
+  final PersonCard personCard;
+
+  //交换名片
+  final BusinessCardAction exchange;
+
+  //日程
+  final BusinessCardAction schedule;
+
+  //电话
+  final BusinessCardAction phone;
+
+  //座机
+  final BusinessCardAction landline;
+
+  const PersonActionWidget({
+    Key? key,
+    required this.personCard,
+    required this.exchange,
+    required this.schedule,
+    required this.phone,
+    required this.landline,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        GestureDetector(
+          child: const Icon(
+            Icons.accessibility_new,
+            color: Colors.black87,
+          ),
+          onTap: () {
+            exchange(personCard);
+          },
+        ),
+        IconButton(
+            onPressed: () {
+              schedule(personCard);
+            },
+            icon: const Icon(
+              Icons.schedule,
+              color: Colors.black87,
+            )),
+        GestureDetector(
+          child: const Icon(
+            Icons.phone_android_outlined,
+            color: Colors.black87,
+          ),
+          onTap: () {
+            phone(personCard);
+          },
+        ),
+        IconButton(
+            onPressed: () {
+              landline(personCard);
+            },
+            icon: const Icon(
+              Icons.phone_iphone_outlined,
+              color: Colors.black87,
+            )),
+      ],
     );
   }
 }

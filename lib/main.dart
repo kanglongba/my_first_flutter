@@ -79,6 +79,7 @@ class MyApp extends StatelessWidget {
         '/tutorialPage': (context) => const TutorialHome(),
         '/counter': (context) => const Counter(),
         '/cart': (context) => ShoppingCartPage(),
+        '/businessCard': (context) => MyBusinessCardPage(),
       },
     );
   }

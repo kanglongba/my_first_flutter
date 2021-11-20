@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/official/custom_my_widget.dart';
 
 import 'official_guide_model.dart';
 
@@ -238,6 +239,29 @@ class ShoppingCartState extends State<ShoppingCartPage> {
           onCartChanged: _handleCartChanged,
         );
       }).toList(),
+    );
+  }
+}
+
+class MyBusinessCardPage extends StatelessWidget {
+  const MyBusinessCardPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('我的名片'),
+      ),
+      body: Container(
+        child: MyBusinessCard(
+            personCard: PersonCard(
+          name: '赤木晴子',
+          profession: '湘北篮球队经理',
+          address: '日本神奈川县湘北中学',
+          phoneNo: '18812345678',
+          avatar: 'assets/images/girl18.jpeg',
+        )),
+      ),
     );
   }
 }

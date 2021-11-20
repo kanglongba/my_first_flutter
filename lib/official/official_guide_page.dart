@@ -52,6 +52,11 @@ class OfficialGuidePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/cart');
                 },
                 child: const Text('购物车')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/businessCard');
+                },
+                child: const Text('名片')),
           ],
         ),
       ),

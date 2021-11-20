@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// 1.[Flutter 基础 | 控件 & 布局（一）](https://juejin.cn/post/7030569229459914766)
-/// 2.[Flutter 9种布局组件](https://juejin.cn/post/6919653632468221966)
+/// 1.[Flutter 布局基础教程](https://flutter.cn/docs/codelabs/layout-basics)
+/// 2.[Flutter 基础 | 控件 & 布局（一）](https://juejin.cn/post/7030569229459914766)
+/// 3.[Flutter 9种布局组件](https://juejin.cn/post/6919653632468221966)
 ///
 /// 1.Flutter 中控件尺寸不由其自身决定的，而是由它的父控件。
 /// 2.父控件总是会施加一个约束给孩子，这个约束会决定孩子宽高的取值范围以及相对位置。
