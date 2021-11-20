@@ -92,6 +92,11 @@ flutter:
     - assets/images/girl23.jpeg
     - assets/images/girl24.jpeg
     - assets/images/girl25.jpeg
+    - assets/images/girl26.jpeg
+    - assets/images/girl27.jpeg
+    - assets/images/girl28.jpeg
+    - assets/images/girl29.jpeg
+    - assets/images/girl30.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
