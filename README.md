@@ -28,3 +28,4 @@ mobile development, and a full API reference.
 9. [Flutter For Android Developers : How to design LinearLayout in Flutter](https://burhanrashid52.com/2018/06/26/flutter-for-android-developers-how-to-design-linearlayout-in-flutter/)
 10. [Flutter For Android Developers : How to design FrameLayout in Flutter](https://medium.com/flutter-community/flutter-for-android-developers-how-to-design-framelayout-in-flutter-93a19fc7e7a6)
 11. [Flutter中StatefulWidget页面生命周期](https://juejin.cn/post/6844903813757796366)
+12. [《Flutter实战·第二版》](https://book.flutterchina.club/preface.html)

@@ -7,11 +7,14 @@ import 'package:my_first_flutter/list_page.dart';
 import 'package:my_first_flutter/my_animate_page.dart';
 import 'package:my_first_flutter/my_home_page.dart';
 import 'package:my_first_flutter/my_layout_page.dart';
+import 'package:my_first_flutter/official/official_guide_page.dart';
 import 'package:my_first_flutter/photo/photo_list_page.dart';
+
+import 'official/official_guide_demo.dart';
 
 void main() {
   //Flutter 自带的界面调试工具，可在页面显示布局
-  debugPaintSizeEnabled = true;
+  debugPaintSizeEnabled = false;
   runApp(const MyApp());
 }
 
@@ -72,6 +75,10 @@ class MyApp extends StatelessWidget {
         '/linearLayoutLike': (context) => AndroidLinearLayoutLikePage(),
         '/frameLayoutLike': (context) => AndroidFrameLayoutLikePage(),
         '/albumPage': (context) => AlbumPage(),
+        '/officialGuidePage': (context) => const OfficialGuidePage(),
+        '/tutorialPage': (context) => const TutorialHome(),
+        '/counter': (context) => const Counter(),
+        '/cart': (context) => ShoppingCartPage(),
       },
     );
   }

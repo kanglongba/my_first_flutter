@@ -129,6 +129,11 @@ class MyHomePage2State extends State<MyHomePage2> {
                   Navigator.pushNamed(context, '/albumPage');
                 },
                 child: const Text('Jump to AlbumPage')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/officialGuidePage');
+                },
+                child: const Text('Jump to OfficialGuidePage')),
           ],
         ),
       ),
