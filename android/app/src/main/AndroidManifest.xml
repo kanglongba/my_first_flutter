@@ -34,8 +34,8 @@
     </queries>
 
     <application
-            android:label="my_first_flutter"
-            android:icon="@mipmap/ic_launcher">
+            android:label="Genshin Impact"
+            android:icon="@drawable/mihoyo">
         <activity
                 android:name=".MainActivity"
                 android:launchMode="singleTop"
