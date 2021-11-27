@@ -268,15 +268,15 @@ class MyBusinessCardPage extends StatelessWidget {
 }
 
 class BeautifulGirlDetailPage extends StatelessWidget {
+  const BeautifulGirlDetailPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BeautifulGirl'),
+        title: const Text('玩偶姐姐'),
       ),
-      body: Center(
-        child: BeautifulGirlDetailWidget(),
-      ),
+      body: const BeautifulGirlDetailWidget(),
     );
   }
 }
