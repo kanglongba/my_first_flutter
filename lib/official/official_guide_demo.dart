@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_first_flutter/official/custom_my_widget.dart';
 
 import 'official_guide_model.dart';
+import 'official_guide_practice.dart';
 
 class TutorialHome extends StatelessWidget {
   const TutorialHome({Key? key}) : super(key: key);
@@ -266,11 +267,22 @@ class MyBusinessCardPage extends StatelessWidget {
   }
 }
 
+class BeautifulGirlDetailPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BeautifulGirl'),
+      ),
+      body: Center(
+        child: BeautifulGirlDetailWidget(),
+      ),
+    );
+  }
+}
+
 //todo
-//1.构建这个UI：https://flutter.cn/docs/development/ui/layout/tutorial
-//2.为上述UI添加交互：https://flutter.cn/docs/development/ui/interactive
 //3.创建 TapBox UI
 //4.创建点评蛋糕的UI，并加入点评交互 https://flutter.cn/docs/development/ui/layout  https://github.com/cfug/flutter.cn/blob/master/examples/layout/pavlova/lib/main.dart
 //5.创建图片长廊UI，并加入交互和跳转到 第四点创建的UI，https://flutter.cn/docs/development/ui/layout  https://github.com/flutter/flutter/blob/master/dev/integration_tests/flutter_gallery/lib/demo/material/grid_list_demo.dart
 //6.继续创建我的相册demo，加入喜欢功能和跳转详情功能，图片tab滑动功能。
-

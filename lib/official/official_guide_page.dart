@@ -57,6 +57,11 @@ class OfficialGuidePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/businessCard');
                 },
                 child: const Text('名片')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/beautifulGirl');
+                },
+                child: const Text('玩偶姐姐')),
           ],
         ),
       ),

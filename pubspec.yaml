@@ -39,6 +39,7 @@ dependencies:
   json_annotation: ^4.1.0
   fluttertoast: ^8.0.8
   shared_preferences: ^2.0.8
+  url_launcher: ^6.0.15
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +98,7 @@ flutter:
     - assets/images/girl28.jpeg
     - assets/images/girl29.jpeg
     - assets/images/girl30.jpeg
+    - assets/images/girl31.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
