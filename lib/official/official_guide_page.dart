@@ -77,6 +77,11 @@ class OfficialGuidePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/tabBoxC');
                 },
                 child: const Text('TabBoxC')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cakeEvaluatePage');
+                },
+                child: const Text('Cake Evaluate')),
           ],
         ),
       ),

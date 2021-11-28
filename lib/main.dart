@@ -12,6 +12,7 @@ import 'package:my_first_flutter/photo/photo_list_page.dart';
 
 import 'official/official_guide_demo.dart';
 import 'official/official_guide_tapbox.dart';
+import 'official/offiial_guie_cake_evaluate.dart';
 
 void main() {
   //Flutter 自带的界面调试工具，可在页面显示布局
@@ -86,6 +87,7 @@ class MyApp extends StatelessWidget {
         '/tabBoxA': (context) => const TabBoxAPage(),
         '/tabBoxB': (context) => const TabBoxBPage(),
         '/tabBoxC': (context) => const TabBoxCPage(),
+        '/cakeEvaluatePage': (context) => const CakeEvaluatePage(),
       },
     );
   }
