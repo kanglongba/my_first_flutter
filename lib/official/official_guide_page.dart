@@ -87,6 +87,11 @@ class OfficialGuidePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/girlGalleryPage');
                 },
                 child: const Text('Girl Gallery')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/girlDatabasePage');
+                },
+                child: const Text('Girl Database')),
           ],
         ),
       ),

@@ -12,12 +12,17 @@ import 'package:my_first_flutter/photo/photo_list_page.dart';
 
 import 'official/official_guide_cake_evaluate.dart';
 import 'official/official_guide_demo.dart';
+import 'official/official_guide_girl_db.dart';
 import 'official/official_guide_girl_gallery.dart';
 import 'official/official_guide_tapbox.dart';
 
 void main() {
   //Flutter 自带的界面调试工具，可在页面显示布局
   debugPaintSizeEnabled = false;
+  // Avoid errors caused by flutter upgrade.
+  // Importing 'package:flutter/widgets.dart' is required.
+  // database required.
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -90,6 +95,7 @@ class MyApp extends StatelessWidget {
         '/tabBoxC': (context) => const TabBoxCPage(),
         '/cakeEvaluatePage': (context) => const CakeEvaluatePage(),
         '/girlGalleryPage': (context) => const GirlGalleryPage(),
+        '/girlDatabasePage': (context) => const GirlDatabasePage(),
       },
     );
   }
