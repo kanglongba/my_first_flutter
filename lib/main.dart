@@ -69,6 +69,7 @@ class MyApp extends StatelessWidget {
         '/positionedPage': (context) => PositionedLayoutPage(),
         '/sizedboxPage': (context) => SizedBoxLayoutPage(),
         '/flexiblePage': (context) => FlexiblePageLayout(),
+        '/cardPage': (context) => CardPageLayout(),
         '/animatePage': (context) => AnimatePage(),
         '/alphaPage': (context) => AlphaAnimation(),
         '/scalePage': (context) => ScaleAnimation(),

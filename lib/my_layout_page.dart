@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// 1.[Flutter 布局基础教程](https://flutter.cn/docs/codelabs/layout-basics)
-/// 2.[Flutter 基础 | 控件 & 布局（一）](https://juejin.cn/post/7030569229459914766)
-/// 3.[Flutter 9种布局组件](https://juejin.cn/post/6919653632468221966)
+/// 2.[Flutter 中的布局](https://flutter.cn/docs/development/ui/layout)
 ///
 /// 1.Flutter 中控件尺寸不由其自身决定的，而是由它的父控件。
 /// 2.父控件总是会施加一个约束给孩子，这个约束会决定孩子宽高的取值范围以及相对位置。
@@ -97,6 +96,11 @@ class MyLayoutPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/flexiblePage');
               },
               child: Text('弹性容器')),
+          OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/cardPage');
+              },
+              child: Text('卡片容器')),
         ],
       ),
     );
@@ -742,6 +746,66 @@ class FlexiblePageLayout extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// 卡片布局：
+class CardPageLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('卡片容器'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(10),
+        child: _buildCard(),
+      ),
+    );
+  }
+
+  Widget _buildCard() {
+    return SizedBox(
+      height: 330,
+      child: Card(
+        elevation: 10,
+        shadowColor: Colors.grey,
+        child: Column(
+          children: [
+            Image.asset('assets/images/girl31.jpeg'),
+            ListTile(
+              title: const Text(
+                '1625 Main Street',
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              subtitle: const Text('My City, CA 99984'),
+              leading: Icon(
+                Icons.restaurant_menu,
+                color: Colors.blue[500],
+              ),
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text(
+                '(408) 555-1212',
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              leading: Icon(
+                Icons.contact_phone,
+                color: Colors.blue[500],
+              ),
+            ),
+            ListTile(
+              title: const Text('costa@example.com'),
+              leading: Icon(
+                Icons.contact_mail,
+                color: Colors.blue[500],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
