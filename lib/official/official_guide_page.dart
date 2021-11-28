@@ -62,6 +62,21 @@ class OfficialGuidePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/beautifulGirl');
                 },
                 child: const Text('玩偶姐姐')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/tabBoxA');
+                },
+                child: const Text('TabBoxA')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/tabBoxB');
+                },
+                child: const Text('TabBoxB')),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/tabBoxC');
+                },
+                child: const Text('TabBoxC')),
           ],
         ),
       ),
