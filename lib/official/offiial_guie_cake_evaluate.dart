@@ -13,7 +13,6 @@ class CakeEvaluatePage extends StatefulWidget {
 }
 
 class CakeEvaluateState extends State<CakeEvaluatePage> {
-
   late int starRate;
 
   @override
@@ -170,10 +169,16 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
   }
 
   Icon getStarIcon(int index) {
-    if(index <= starRate) {
-      return const Icon(Icons.star, color: Colors.redAccent,);
+    if (index <= starRate) {
+      return const Icon(
+        Icons.star,
+        color: Colors.redAccent,
+      );
     } else {
-      return const Icon(Icons.star_border, color: Colors.redAccent,);
+      return const Icon(
+        Icons.star_border,
+        color: Colors.redAccent,
+      );
     }
   }
 
