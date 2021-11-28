@@ -4,6 +4,8 @@ import 'package:my_first_flutter/official/official_guide_model.dart';
 
 import 'custom_my_widget.dart';
 
+/// 图片长廊：https://flutter.cn/docs/development/ui/layout
+/// 代码：https://github.com/flutter/flutter/blob/master/dev/integration_tests/flutter_gallery/lib/demo/material/grid_list_demo.dart
 /// flutter_staggered_grid_view：https://pub.dev/packages/flutter_staggered_grid_view
 /// 使用StaggeredGridView实现瀑布流：https://www.jianshu.com/p/35c1aa49c32b
 class GirlGalleryPage extends StatelessWidget {
@@ -59,7 +61,7 @@ class GirlGalleryState extends State<GirlGalleryWidget> {
       itemBuilder: (context, index) {
         return GirlGalleryCard(girlItem: girls[index], favorGirl: favorGirl);
       },
-      // 配置主轴和交叉轴的长度
+      // 配置主轴和交叉轴的长度比例
       staggeredTileBuilder: (index) {
         // 描述主轴与交叉轴与主轴的比例。第一个参数是交叉轴，第二个参数是主轴。
         return StaggeredTile.count(1, index.isEven ? 1.5 : 1.8);

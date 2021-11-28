@@ -282,5 +282,4 @@ class BeautifulGirlDetailPage extends StatelessWidget {
 }
 
 //todo
-//5.创建图片长廊UI，并加入交互和跳转到 第四点创建的UI，https://flutter.cn/docs/development/ui/layout  https://github.com/flutter/flutter/blob/master/dev/integration_tests/flutter_gallery/lib/demo/material/grid_list_demo.dart
 //6.继续创建我的相册demo，加入喜欢功能和跳转详情功能，图片tab滑动功能。
