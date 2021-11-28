@@ -33,6 +33,7 @@ class GirlGalleryItem {
   int rateScore;
   String imgSrc;
   bool isFavor;
+  int reviewers;
 
   GirlGalleryItem(
       {required this.id,
@@ -40,7 +41,8 @@ class GirlGalleryItem {
       required this.desc,
       required this.rateScore,
       required this.imgSrc,
-      required this.isFavor});
+      required this.isFavor,
+      required this.reviewers});
 
   GirlGalleryItem.id(this.id)
       : name = '妹子$id号',
@@ -48,7 +50,8 @@ class GirlGalleryItem {
             '我对钱没有兴趣，从1999年阿里巴巴创业到现在为止，我没有一个月拿过工资，工资当然都发到我们家老婆账号上去了，我从来没碰过钱。',
         imgSrc = 'assets/images/girl$id.jpeg',
         rateScore = 0,
-        isFavor = false;
+        isFavor = false,
+        reviewers = 0;
 }
 
 typedef FavorGirl = void Function(int index, bool isFavor);
