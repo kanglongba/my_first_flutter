@@ -13,6 +13,9 @@ class CakeEvaluatePage extends StatefulWidget {
 }
 
 class CakeEvaluateState extends State<CakeEvaluatePage> {
+
+  late int starRate;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,34 +61,19 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
-                children: const [
-                  Spacer(
+                children: [
+                  const Spacer(
                     flex: 3,
                   ),
-                  Icon(
-                    Icons.star_border,
-                    color: Colors.redAccent,
-                  ),
-                  Icon(
-                    Icons.star_border,
-                    color: Colors.redAccent,
-                  ),
-                  Icon(
-                    Icons.star_border,
-                    color: Colors.redAccent,
-                  ),
-                  Icon(
-                    Icons.star_border,
-                    color: Colors.redAccent,
-                  ),
-                  Icon(
-                    Icons.star_border,
-                    color: Colors.redAccent,
-                  ),
-                  Spacer(
+                  getStarWidget(1),
+                  getStarWidget(2),
+                  getStarWidget(3),
+                  getStarWidget(4),
+                  getStarWidget(5),
+                  const Spacer(
                     flex: 2,
                   ),
-                  Text(
+                  const Text(
                     '170 Reviews',
                     style: TextStyle(
                       color: Colors.black,
@@ -95,7 +83,7 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
                       letterSpacing: 0.5,
                     ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 3,
                   ),
                 ],
@@ -170,6 +158,25 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
     ),
   );
 
+  GestureDetector getStarWidget(int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          starRate = index;
+        });
+      },
+      child: getStarIcon(index),
+    );
+  }
+
+  Icon getStarIcon(int index) {
+    if(index <= starRate) {
+      return const Icon(Icons.star, color: Colors.redAccent,);
+    } else {
+      return const Icon(Icons.star_border, color: Colors.redAccent,);
+    }
+  }
+
   /// 强制某个页面横屏：https://zhuanlan.zhihu.com/p/302687896
   @override
   void initState() {
@@ -179,6 +186,7 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight
     ]);
+    starRate = 0;
   }
 
   @override
