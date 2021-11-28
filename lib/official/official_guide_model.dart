@@ -51,7 +51,7 @@ class GirlGalleryItem {
         imgSrc = 'assets/images/girl$id.jpeg',
         rateScore = 0,
         isFavor = false,
-        reviewers = 0;
+        reviewers = 170 + id;
 }
 
 typedef FavorGirl = void Function(int index, bool isFavor);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_first_flutter/official/official_guide_model.dart';
 
 /// 评价蛋糕：https://flutter.cn/docs/development/ui/layout
 /// 代码：https://github.com/cfug/flutter.cn/blob/master/examples/layout/pavlova/lib/main.dart
@@ -13,29 +14,33 @@ class CakeEvaluatePage extends StatefulWidget {
 }
 
 class CakeEvaluateState extends State<CakeEvaluatePage> {
-  late int starRate;
+  late GirlGalleryItem girlItem;
 
   @override
   Widget build(BuildContext context) {
+    // 接收页面传递的数据
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      girlItem = ModalRoute.of(context)!.settings.arguments as GirlGalleryItem;
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('大众点评'),
       ),
       body: Row(
         children: [
-          Image.asset('assets/images/girl27.jpeg', fit: BoxFit.cover),
+          Image.asset(girlItem.imgSrc, fit: BoxFit.cover),
           Expanded(
               child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Padding(
-                padding:
-                    EdgeInsets.only(left: 10, top: 20, right: 10, bottom: 15),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 10, top: 20, right: 10, bottom: 15),
                 child: Text(
-                  '妹子27号',
-                  style: TextStyle(
+                  girlItem.name,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     letterSpacing: 0.5,
@@ -43,12 +48,13 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
                   ),
                 ),
               ),
-              const Expanded(
+              Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 15),
+                  padding:
+                      const EdgeInsets.only(left: 10, right: 10, bottom: 15),
                   child: Text(
-                    '我仔细查了一下，我拿二星的时候是35岁，比楼主还大两岁，可能是当时年龄大的同学不多吧，所以内网还没有形成这种风气，当时还真没往年龄这边想。我记得当时我是想了几晚（通宵）吧，因为我是一个比较喜欢思考的人（其实是躺床上睡不着）。',
-                    style: TextStyle(
+                    girlItem.desc,
+                    style: const TextStyle(
                       color: Colors.black38,
                       fontFamily: 'Georgia',
                       fontSize: 15,
@@ -72,9 +78,9 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
                   const Spacer(
                     flex: 2,
                   ),
-                  const Text(
-                    '170 Reviews',
-                    style: TextStyle(
+                  Text(
+                    '${girlItem.reviewers} Reviews',
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.w800,
@@ -161,7 +167,7 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          starRate = index;
+          girlItem.rateScore = index;
         });
       },
       child: getStarIcon(index),
@@ -169,7 +175,7 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
   }
 
   Icon getStarIcon(int index) {
-    if (index <= starRate) {
+    if (index <= girlItem.rateScore) {
       return const Icon(
         Icons.star,
         color: Colors.redAccent,
@@ -191,7 +197,8 @@ class CakeEvaluateState extends State<CakeEvaluatePage> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight
     ]);
-    starRate = 0;
+    // 初始化一个数据
+    girlItem = GirlGalleryItem.id(27);
   }
 
   @override

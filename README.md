@@ -30,3 +30,5 @@ mobile development, and a full API reference.
 10. [Flutter For Android Developers : How to design FrameLayout in Flutter](https://medium.com/flutter-community/flutter-for-android-developers-how-to-design-framelayout-in-flutter-93a19fc7e7a6)
 11. [Flutter中StatefulWidget页面生命周期](https://juejin.cn/post/6844903813757796366)
 12. [《Flutter实战·第二版》](https://book.flutterchina.club/preface.html)
+13. [导航到一个新页面和返回](https://flutter.cn/docs/cookbook/navigation/navigation-basics)
+14. [传递数据到新页面](https://flutter.cn/docs/cookbook/navigation/passing-data)

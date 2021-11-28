@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'official_guide_cake_evaluate.dart';
 import 'official_guide_model.dart';
 
 class MyAppBar extends StatelessWidget {
@@ -297,6 +298,29 @@ class GirlGalleryCard extends StatelessWidget {
       {Key? key, required this.girlItem, required this.favorGirl})
       : super(key: key);
 
+  void navigateToCakeEvaluate(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const CakeEvaluatePage(),
+        // Pass the arguments as part of the RouteSettings. The
+        // DetailScreen reads the arguments from these settings.
+        settings: RouteSettings(
+          arguments: girlItem,
+        ),
+      ),
+    );
+  }
+
+  // 如果在App的路由表中注册过，可以直接靠名字跳转
+  void navigateToCakeEvaluateByName(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      '/cakeEvaluatePage',
+      arguments: girlItem,
+    );
+  }
+
   /// 图片的用法：https://medium.com/flutter-community/how-to-use-images-in-flutter-to-the-point-5542b4412a53
   @override
   Widget build(BuildContext context) {
@@ -309,9 +333,14 @@ class GirlGalleryCard extends StatelessWidget {
         //占满父布局
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            girlItem.imgSrc,
-            fit: BoxFit.cover,
+          GestureDetector(
+            child: Image.asset(
+              girlItem.imgSrc,
+              fit: BoxFit.cover,
+            ),
+            onTap: () {
+              navigateToCakeEvaluate(context);
+            },
           ),
           Positioned(
             left: 0,
