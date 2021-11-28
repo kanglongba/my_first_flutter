@@ -329,23 +329,24 @@ class WrapLayoutPage extends StatelessWidget {
           title: const Text('流式布局'),
         ),
         body: Wrap(
-          direction: Axis.horizontal,
           //主轴的方向
-          alignment: WrapAlignment.start,
+          direction: Axis.horizontal,
           //主轴上的对齐方式
-          crossAxisAlignment: WrapCrossAlignment.start,
+          alignment: WrapAlignment.start,
           //交叉轴的对齐方式
-          runAlignment: WrapAlignment.start,
+          crossAxisAlignment: WrapCrossAlignment.start,
           //交叉轴上的对齐方式
-          spacing: 30,
+          runAlignment: WrapAlignment.start,
           //主轴上的间距
-          runSpacing: 10,
+          spacing: 30,
           //交叉轴上的间距
+          runSpacing: 10,
           children: List.generate(10, (i) {
             double w = 50.0 + 10 * i;
+            double h = 10.0 + 10 * i;
             return Container(
               color: Colors.primaries[i],
-              height: 50,
+              height: h,
               width: w,
               alignment: Alignment.center,
               child: Text('$i'),

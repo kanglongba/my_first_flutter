@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -286,6 +285,67 @@ class PersonActionWidget extends StatelessWidget {
               color: Colors.black87,
             )),
       ],
+    );
+  }
+}
+
+class GirlGalleryCard extends StatelessWidget {
+  final GirlGalleryItem girlItem;
+  final FavorGirl favorGirl;
+
+  const GirlGalleryCard(
+      {Key? key, required this.girlItem, required this.favorGirl})
+      : super(key: key);
+
+  /// 图片的用法：https://medium.com/flutter-community/how-to-use-images-in-flutter-to-the-point-5542b4412a53
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 5,
+      shadowColor: Colors.grey,
+      margin: const EdgeInsets.all(3),
+      child: Stack(
+        alignment: AlignmentDirectional.topCenter,
+        //占满父布局
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            girlItem.imgSrc,
+            fit: BoxFit.cover,
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              color: Colors.black38,
+              height: 50,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    girlItem.name,
+                    style: const TextStyle(fontSize: 15, color: Colors.white),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {
+                        favorGirl(girlItem.id - 1, !girlItem.isFavor);
+                      },
+                      icon: Icon(
+                        girlItem.isFavor ? Icons.star : Icons.star_border,
+                        color: Colors.redAccent,
+                        size: 20,
+                      ))
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
