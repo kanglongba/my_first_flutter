@@ -126,6 +126,11 @@ class MyHomePage2State extends State<MyHomePage2> {
                 child: const Text('Jump to FrameLayoutLikePage')),
             OutlinedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, '/redFlagPage');
+                },
+                child: const Text('Jump to redFlagPage')),
+            OutlinedButton(
+                onPressed: () {
                   Navigator.pushNamed(context, '/albumPage');
                 },
                 child: const Text('Jump to AlbumPage')),

@@ -10,6 +10,7 @@ import 'package:my_first_flutter/my_layout_page.dart';
 import 'package:my_first_flutter/official/official_guide_page.dart';
 import 'package:my_first_flutter/photo/photo_list_page.dart';
 
+import 'burhanrashid/red_flag.dart';
 import 'official/official_guide_cake_evaluate.dart';
 import 'official/official_guide_demo.dart';
 import 'official/official_guide_girl_db.dart';
@@ -96,6 +97,7 @@ class MyApp extends StatelessWidget {
         '/cakeEvaluatePage': (context) => const CakeEvaluatePage(),
         '/girlGalleryPage': (context) => const GirlGalleryPage(),
         '/girlDatabasePage': (context) => const GirlDatabasePage(),
+        '/redFlagPage': (context) => RedFlagPage(),
       },
     );
   }
