@@ -85,6 +85,7 @@ class MyApp extends StatelessWidget {
         '/linearLayoutLike': (context) => AndroidLinearLayoutLikePage(),
         '/frameLayoutLike': (context) => AndroidFrameLayoutLikePage(),
         '/albumPage': (context) => AlbumPage(),
+        '/wallPaperPage': (context) => const WallPaperPage(),
         '/officialGuidePage': (context) => const OfficialGuidePage(),
         '/tutorialPage': (context) => const TutorialHome(),
         '/counter': (context) => const Counter(),

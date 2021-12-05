@@ -9,7 +9,6 @@ import 'api_request_utils.dart';
 class AlbumPage extends StatefulWidget {
   @override
   State createState() {
-    // return WallPaperState();
     return AlbumState();
   }
 }
@@ -141,8 +140,41 @@ class AlbumState extends State<AlbumPage> {
   /// 详细的 item
   Widget createDetailItem(BuildContext context, int index) {
     return Padding(
-      padding: const EdgeInsets.all(30),
-      child: Image.network(photoList[index].cover!),
+      padding: const EdgeInsets.all(5),
+      child: Card(
+        margin: const EdgeInsets.all(10),
+        elevation: 5,
+        shadowColor: Colors.grey,
+        child: AspectRatio(
+          aspectRatio: 9.0 / 12.0,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.network(
+                photoList[index].cover!,
+                fit: BoxFit.cover,
+              ),
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: 20, top: 20, right: 20, bottom: 20),
+                    color: Colors.white70,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      photoList[index].setname!,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -189,8 +221,17 @@ class AlbumState extends State<AlbumPage> {
   }
 }
 
+class WallPaperPage extends StatefulWidget {
+  const WallPaperPage({Key? key}) : super(key: key);
+
+  @override
+  State createState() {
+    return WallPaperState();
+  }
+}
+
 /// 调用壁纸接口，显示壁纸，一次仅显示一张
-class WallPaperState extends State<AlbumPage> {
+class WallPaperState extends State<WallPaperPage> {
   static const wallPaperSourceKey = 'wallPaperSource';
   late Future<AlbumResponse> albumFuture;
   late WallPaper wallPaper;
