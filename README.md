@@ -32,3 +32,4 @@ mobile development, and a full API reference.
 12. [《Flutter实战·第二版》](https://book.flutterchina.club/preface.html)
 13. [导航到一个新页面和返回](https://flutter.cn/docs/cookbook/navigation/navigation-basics)
 14. [传递数据到新页面](https://flutter.cn/docs/cookbook/navigation/passing-data)
+15. [向应用添加闪屏页](https://flutter.cn/docs/development/ui/advanced/splash-screen)
