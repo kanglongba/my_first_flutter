@@ -11,6 +11,8 @@ import 'package:my_first_flutter/official/official_guide_page.dart';
 import 'package:my_first_flutter/photo/photo_list_page.dart';
 
 import 'burhanrashid/red_flag.dart';
+import 'foundation/foundation_webview_page.dart';
+import 'home/app_home_page.dart';
 import 'official/official_guide_cake_evaluate.dart';
 import 'official/official_guide_demo.dart';
 import 'official/official_guide_girl_db.dart';
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage2(),
+      home: const AppHomePage(),
       routes: <String, WidgetBuilder>{
         '/a': (BuildContext context) => MyPage(title: 'page A'),
         '/b': (BuildContext context) => MyPage(title: 'page B'),
@@ -98,7 +100,9 @@ class MyApp extends StatelessWidget {
         '/cakeEvaluatePage': (context) => const CakeEvaluatePage(),
         '/girlGalleryPage': (context) => const GirlGalleryPage(),
         '/girlDatabasePage': (context) => const GirlDatabasePage(),
-        '/redFlagPage': (context) => RedFlagPage(),
+        '/redFlagPage': (context) => const RedFlagPage(),
+        '/foundationWebViewPage': (context) => const FoundationWebViewPage(),
+        '/appHomePage': (context) => const AppHomePage(),
       },
     );
   }

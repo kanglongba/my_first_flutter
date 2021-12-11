@@ -42,6 +42,8 @@ dependencies:
   shared_preferences: ^2.0.8
   url_launcher: ^6.0.15
   flutter_staggered_grid_view: ^0.4.1
+  webview_flutter: ^3.0.0
+  webview_flutter_web: ^0.1.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +72,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/images/avatar.jpeg
     - assets/images/girl1.jpeg
     - assets/images/girl2.jpeg
     - assets/images/girl3.jpeg
@@ -102,6 +105,10 @@ flutter:
     - assets/images/girl30.jpeg
     - assets/images/girl31.jpeg
     - assets/images/girl32.jpeg
+    - assets/images/girl33.jpeg
+    - assets/images/girl34.jpeg
+    - assets/images/girl35.jpeg
+    - assets/images/girl36.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
