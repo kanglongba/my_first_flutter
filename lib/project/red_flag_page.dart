@@ -22,7 +22,7 @@ class RedFlagPage extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 3.0 / 2.0,
           child: CustomPaint(
-            painter: FiveStarredRedFlag(hover: false),
+            painter: FiveStarredRedFlagPainter(hover: false),
             size: Size.infinite,
             willChange: false,
             isComplex: false,
@@ -93,10 +93,10 @@ class MyPainter extends CustomPainter {
 
 /// 星星坐标计算准确，绘制效果很好
 /// 代码：https://github.com/iota9star/five_starred_red_flag_flutter
-class FiveStarredRedFlag extends CustomPainter {
+class FiveStarredRedFlagPainter extends CustomPainter {
   final bool hover;
 
-  FiveStarredRedFlag({required this.hover});
+  FiveStarredRedFlagPainter({required this.hover});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -257,7 +257,7 @@ class FiveStarredRedFlag extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant FiveStarredRedFlag oldDelegate) {
+  bool shouldRepaint(covariant FiveStarredRedFlagPainter oldDelegate) {
     return oldDelegate.hover != hover;
   }
 }

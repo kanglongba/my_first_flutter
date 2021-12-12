@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:my_first_flutter/photo/photo_list_response.dart';
-import 'package:my_first_flutter/photo/wall_paper_response.dart';
+import 'package:my_first_flutter/project/album_response.dart';
+import 'package:my_first_flutter/project/wall_paper_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api_request_utils.dart';
 
 class AlbumPage extends StatefulWidget {
+  const AlbumPage({Key? key}) : super(key: key);
+
   @override
   State createState() {
     return AlbumState();
@@ -260,7 +262,7 @@ class WallPaperState extends State<WallPaperPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('相册'),
+        title: const Text('墙纸'),
         actions: [
           IconButton(
               onPressed: () {

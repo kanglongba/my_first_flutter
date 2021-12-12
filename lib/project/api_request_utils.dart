@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:my_first_flutter/photo/photo_list_response.dart';
-import 'package:my_first_flutter/photo/wall_paper_response.dart';
+import 'package:my_first_flutter/project/album_response.dart';
+import 'package:my_first_flutter/project/wall_paper_response.dart';
 
 const baseUrl = 'https://api.isoyu.com/api/picture/index?page=';
 const mm = 'https://api.isoyu.com/mm_images.php';

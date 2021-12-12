@@ -6,10 +6,9 @@ import 'package:my_first_flutter/guide/my_guide_page_animate.dart';
 import 'package:my_first_flutter/guide/my_guide_page_linearlayout.dart';
 import 'package:my_first_flutter/guide/my_guide_page_list.dart';
 import 'package:my_first_flutter/guide/my_guide_page_relativeLayout.dart';
-import 'package:my_first_flutter/my_layout_page.dart';
-import 'package:my_first_flutter/photo/photo_list_page.dart';
+import 'package:my_first_flutter/project/album_wallPaper_page.dart';
+import 'package:my_first_flutter/project/common_layout_page.dart';
 
-import 'burhanrashid/red_flag.dart';
 import 'foundation/foundation_webview_page.dart';
 import 'guide/my_guide_page_image.dart';
 import 'guide/my_guide_page_navigate.dart';
@@ -20,6 +19,7 @@ import 'official/official_guide_doll.dart';
 import 'official/official_guide_girl_db.dart';
 import 'official/official_guide_girl_gallery.dart';
 import 'official/official_guide_tapbox.dart';
+import 'project/red_flag_page.dart';
 
 void main() {
   //Flutter 自带的界面调试工具，可在页面显示布局
@@ -85,8 +85,10 @@ class MyApp extends StatelessWidget {
         '/sizedboxPage': (context) => SizedBoxLayoutPage(),
         '/flexiblePage': (context) => FlexiblePageLayout(),
         '/cardPage': (context) => CardPageLayout(),
+        '/gridViewPage': (context) => GridViewPage(),
+        '/listViewPage': (context) => ListViewPage(),
         '/animatePage': (context) => const MyAnimatePage(),
-        '/alphaPage': (context) => AlphaAnimation(),
+        '/alphaPage': (context) => const AlphaAnimation(),
         '/scalePage': (context) => ScaleAnimation(),
         '/activityLike': (context) => const AndroidActivityLikePage(),
         '/linearLayoutLike': (context) => AndroidLinearLayoutLikePage(),

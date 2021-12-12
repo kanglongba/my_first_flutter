@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_first_flutter/foundation/flutter_foundation.dart';
 import 'package:my_first_flutter/guide/flutter_guide.dart';
 import 'package:my_first_flutter/official/flutter_practice.dart';
+import 'package:my_first_flutter/project/flutter_project.dart';
 
 class AppHomePage extends StatefulWidget {
   const AppHomePage({Key? key}) : super(key: key);
@@ -125,6 +126,8 @@ class AppHomeState extends State<AppHomePage> {
         return const FlutterGuideWidget();
       case 2:
         return const FlutterPracticeWidget();
+      case 3:
+        return const FlutterProjectWidget();
       default:
         return const FlutterFoundationWidget();
     }

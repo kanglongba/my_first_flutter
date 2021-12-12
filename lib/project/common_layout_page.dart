@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 
 /// 1.[Flutter 布局基础教程](https://flutter.cn/docs/codelabs/layout-basics)
 /// 2.[Flutter 中的布局](https://flutter.cn/docs/development/ui/layout)
+/// 3.[深入理解 Flutter 布局约束](https://flutter.cn/docs/development/ui/layout/constraints)
 ///
 /// 1.Flutter 中控件尺寸不由其自身决定的，而是由它的父控件。
 /// 2.父控件总是会施加一个约束给孩子，这个约束会决定孩子宽高的取值范围以及相对位置。
 class MyLayoutPage extends StatelessWidget {
+  const MyLayoutPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MyLayoutPage'),
+        title: const Text('构建UI的常用布局'),
       ),
       body: GridView.count(
         primary: false,
         scrollDirection: Axis.vertical,
         crossAxisCount: 3,
         //交叉轴子widget的个数
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
         children: [
@@ -25,82 +28,92 @@ class MyLayoutPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/flexPage');
               },
-              child: Text('弹性布局')),
+              child: Text('弹性布局 - Flex')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/row');
               },
-              child: Text('线性布局-水平')),
+              child: Text('线性布局 - Row')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/column');
               },
-              child: Text('线性布局-垂直')),
+              child: Text('线性布局 - Column')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/center');
               },
-              child: Text('居中布局')),
+              child: Text('居中布局 - Center')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/alignPage');
               },
-              child: Text('对齐布局')),
+              child: Text('对齐布局 - Align')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/absolutePage');
               },
-              child: Text('层叠布局')),
+              child: Text('层叠布局 - Stack')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/indexedStackPage');
               },
-              child: Text('层叠布局2')),
+              child: Text('层叠布局2 - Stack')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/wrapPage');
               },
-              child: Text('流式布局')),
+              child: Text('流式布局 - Wrap')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/scrollPage');
               },
-              child: Text('滚动布局')),
+              child: Text('滚动布局 - SingleChildScrollView')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/aspectRatioPage');
               },
-              child: Text('比例布局')),
+              child: Text('比例布局 - AspectRatio')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/containerPage');
               },
-              child: Text('容器布局')),
+              child: Text("容器布局 - Container\nFlutter中最强大的一个布局")),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/paddingPage');
               },
-              child: Text('填充布局')),
+              child: Text('包裹布局 - Padding')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/positionedPage');
               },
-              child: Text('位置布局')),
+              child: Text('位置布局 - Positioned')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/sizedboxPage');
               },
-              child: Text('尺寸限制容器')),
+              child: Text('尺寸限制容器 - SizedBox')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/flexiblePage');
               },
-              child: Text('弹性容器')),
+              child: Text('弹性容器 - Flexible、Expanded、Spacer')),
           OutlinedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/cardPage');
               },
-              child: Text('卡片容器')),
+              child: Text('卡片容器 - Card')),
+          OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/gridViewPage');
+              },
+              child: Text('网格布局 - GridView')),
+          OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/listViewPage');
+              },
+              child: Text('列表布局 - ListView')),
         ],
       ),
     );
@@ -112,10 +125,11 @@ class CenterLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('居中布局'),
+        title: const Text('居中布局 - Center'),
       ),
       body: Container(
         color: Colors.lightBlue,
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           widthFactor: 2,
           heightFactor: 2,
@@ -131,35 +145,52 @@ class PaddingLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('填充布局'),
+        title: Text('包裹布局 - Padding'),
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            Padding(
-              padding:
-                  EdgeInsets.only(left: 10, top: 15, right: 20, bottom: 25),
-              child: Container(
-                color: Colors.green,
-                width: double.infinity,
-                height: 100,
+            Container(
+              color: Colors.indigoAccent,
+              child: Padding(
+                padding:
+                    EdgeInsets.only(left: 10, top: 15, right: 20, bottom: 25),
+                child: Container(
+                  color: Colors.green,
+                  width: double.infinity,
+                  height: 100,
+                ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 40, 25, 70),
-              child: Container(
-                color: Colors.orange,
-                width: double.infinity,
-                height: 100,
+            Container(
+              color: Colors.white,
+              height: 2,
+            ),
+            Container(
+              color: Colors.indigoAccent,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 40, 25, 70),
+                child: Container(
+                  color: Colors.orange,
+                  width: double.infinity,
+                  height: 100,
+                ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 90, horizontal: 40),
-              child: Container(
-                color: Colors.red,
-                width: double.infinity,
-                height: 100,
+            Container(
+              color: Colors.white,
+              height: 2,
+            ),
+            Container(
+              color: Colors.indigoAccent,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 90, horizontal: 40),
+                child: Container(
+                  color: Colors.red,
+                  width: double.infinity,
+                  height: 100,
+                ),
               ),
             ),
           ],
@@ -177,12 +208,14 @@ class FlexLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('弹性布局'),
+        title: Text('弹性布局 - Flex'),
       ),
       body: Flex(
         direction: Axis.horizontal, // 方向
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // 看注释，Expanded只能配置Row、Column、Flex使用
+          // 看注释，Expanded只能配和Row、Column、Flex使用
           Expanded(
               flex: 1, // 比例
               child: Container(
@@ -202,7 +235,7 @@ class RowLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('线性布局-水平'),
+        title: const Text('线性布局 - Row'),
       ),
       body: Row(
         //表示子Widgets在Row所占用的水平空间内对齐方式
@@ -232,10 +265,11 @@ class ColumnLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('线性布局-垂直'),
+        title: Text('线性布局 - Column'),
       ),
       body: Column(
         //属性同Row，它们都继承自Flex
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // 看注释，Expanded只能配置Row、Column、Flex使用
           Expanded(flex: 1, child: Image.asset('assets/images/girl6.jpeg')),
@@ -252,23 +286,21 @@ class AlignLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('对齐布局'),
+        title: Text('对齐布局 - Align'),
       ),
-      body: Center(
-        child: Container(
-          margin:
-              const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
-          width: double.maxFinite,
-          height: double.maxFinite,
-          color: Colors.lightBlueAccent,
-          child: Align(
-            widthFactor: 3, //宽度因子，如果设置的话，Align的宽度就是child的宽度乘以这个值，不能为负数
-            heightFactor: 2, //高度因子，如果设置的话，Align的高度就是child的高度乘以这个值，不能为负数
-            alignment: Alignment.centerRight, //对齐方式
-            child: Image.asset(
-              'assets/images/girl9.jpeg',
-              width: 250,
-            ),
+      body: Container(
+        margin: const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
+        width: double.maxFinite,
+        height: double.maxFinite,
+        color: Colors.lightBlueAccent,
+        child: Align(
+          widthFactor: 3, //宽度因子，如果设置的话，Align的宽度就是child的宽度乘以这个值，不能为负数
+          heightFactor: 2, //高度因子，如果设置的话，Align的高度就是child的高度乘以这个值，不能为负数
+          alignment: Alignment.centerRight,
+          //对齐方式
+          child: Image.asset(
+            'assets/images/girl9.jpeg',
+            width: 250,
           ),
         ),
       ),
@@ -284,7 +316,7 @@ class StackLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('层叠布局'),
+        title: Text('层叠布局 - Stack'),
       ),
       body: Center(
         child: Stack(
@@ -326,7 +358,7 @@ class WrapLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('流式布局'),
+          title: const Text('流式布局 - Wrap'),
         ),
         body: Wrap(
           //主轴的方向
@@ -361,7 +393,7 @@ class ScrollLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('滚动布局'),
+        title: Text('滚动布局 - SingleChildScrollView'),
       ),
       body: Scrollbar(
         //滚动条
@@ -394,7 +426,7 @@ class _IndexedStackLayoutPageState extends State<IndexedStackLayoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('层叠布局2'),
+        title: Text('层叠布局2 - Stack'),
       ),
       body: Column(
         children: <Widget>[
@@ -484,9 +516,10 @@ class AspectRatioLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('比例布局'),
+        title: Text('比例布局 - AspectRatio'),
       ),
       body: Container(
+        padding: EdgeInsets.all(10),
         width: 400,
         height: 400,
         color: Colors.orange,
@@ -495,7 +528,12 @@ class AspectRatioLayoutPage extends StatelessWidget {
           // 宽度 与 高度的 比
           aspectRatio: 16.0 / 9.0,
           child: Container(
+            alignment: Alignment.center,
             color: Colors.red,
+            child: Text(
+              "16 : 9",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
           ),
         ),
       ),
@@ -508,11 +546,11 @@ class ContainerLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('容器布局'),
+        title: Text('容器布局 - Container'),
       ),
       body: Container(
         alignment: Alignment.topLeft,
-        color: Colors.purple,
+        color: Colors.amber,
         constraints: BoxConstraints.expand(),
         child: Container(
           //child对齐方式
@@ -552,26 +590,35 @@ class PositionedLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('位置布局'),
+        title: Text(
+          '位置布局 - Positioned(必须配合Stack使用)',
+          style: TextStyle(fontSize: 15),
+        ),
       ),
-      body: Stack(
-        alignment: Alignment.topRight,
-        children: [
-          Positioned(
-              right: 50,
-              bottom: 10,
-              width: 280,
-              //子Widget的宽度
-              height: 100,
-              //子Widget的高度
-              child: Container(
-                alignment: Alignment.bottomRight,
-                color: Colors.lightBlue,
-                width: 50,
-                height: 50,
-                child: Text('只能配合Stack使用'),
-              ))
-        ],
+      body: Container(
+        color: Colors.amber,
+        child: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            Positioned(
+                right: 30,
+                bottom: 50,
+                width: 280,
+                //子Widget的宽度
+                height: 100,
+                //子Widget的高度
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  color: Colors.lightBlue,
+                  width: 50,
+                  height: 50,
+                  child: Text(
+                    '只能配合Stack使用',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ))
+          ],
+        ),
       ),
     );
   }
@@ -584,7 +631,7 @@ class SizedBoxLayoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('尺寸限制容器布局'),
+        title: Text('尺寸限制容器布局 - SizedBox'),
       ),
       body: Container(
         color: Colors.greenAccent,
@@ -603,6 +650,11 @@ class SizedBoxLayoutPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                const SizedBox(
+                  //充当Padding的作用
+                  width: 100,
+                  height: 10,
+                ),
                 Container(
                   width: 50,
                   height: 50,
@@ -611,7 +663,7 @@ class SizedBoxLayoutPage extends StatelessWidget {
                 const SizedBox(
                   //充当Padding的作用
                   width: 100,
-                  height: 50,
+                  height: 30,
                 ),
                 Container(
                   width: 50,
@@ -641,7 +693,10 @@ class FlexiblePageLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flexible'),
+        title: Text(
+          '弹性容器 - Flexible、Expanded、Spacer',
+          style: TextStyle(fontSize: 15),
+        ),
       ),
       body: Column(
         children: [
@@ -758,7 +813,7 @@ class CardPageLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('卡片容器'),
+        title: Text('卡片容器 - Card'),
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
@@ -809,5 +864,63 @@ class CardPageLayout extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class GridViewPage extends StatelessWidget {
+  var colors = [
+    Colors.indigoAccent,
+    Colors.lightGreen,
+    Colors.orangeAccent,
+    Colors.lightBlue,
+    Colors.redAccent,
+    Colors.deepOrange,
+    Colors.purpleAccent,
+    Colors.teal,
+    Colors.pink,
+    Colors.brown
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('网格布局 - GridView'),
+      ),
+      body: GridView.builder(
+          itemCount: 36,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              color: colors[index % 10],
+              child: Image.asset('assets/images/girl${index + 1}.jpeg'),
+            );
+          }),
+    );
+  }
+}
+
+class ListViewPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('列表布局 - ListView'),
+        ),
+        body: Container(
+          padding: const EdgeInsets.all(5),
+          child: ListView.separated(
+              itemBuilder: (BuildContext context, int index) {
+                return Image.asset('assets/images/girl${index + 1}.jpeg');
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const Divider(
+                  height: 2,
+                  color: Colors.teal,
+                );
+              },
+              itemCount: 36),
+        ));
   }
 }
