@@ -18,7 +18,7 @@ class MySimpleListPage extends StatelessWidget {
         leading: const Icon(Icons.fastfood, color: Colors.orange),
         trailing: const Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          Navigator.pushNamed(context, '/detail', arguments: data[i]);
+          Navigator.pushNamed(context, '/detail', arguments: data[i-1]);
         },
       ));
     }
