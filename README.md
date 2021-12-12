@@ -1,19 +1,26 @@
-# my_first_flutter
+# 项目简介
 
-A new Flutter project.
+本项目是一个Flutter学习项目，以Android开发者的视角展开。项目绝大部分内容来自[Flutter官方网站](https://flutter.cn)，还有一部分来自个人Flutter实践。  
+本项目包含了进行Flutter开发所需的基本技能，主要有：
 
-## Getting Started
+* Flutter的基本概念
+* 页面跳转
+* 动画
+* 常用的布局
+* ListView和GridView
+* Flutter常用控件
+* 网络操作
+* 数据库操作
+* SharedPreferences使用
+* WebView使用
+* 第三方应用唤起
+* 自定义组件
+* 自绘组件
 
-This project is a starting point for a Flutter application.
+## Todo
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials, samples, guidance on
-mobile development, and a full API reference.
+1. 实践Android工程嵌入Flutter开发
+2. 使用[摸鱼Api](https://momoyu.cc/)，写一个纯Flutter应用
 
 # Reference
 
@@ -33,3 +40,6 @@ mobile development, and a full API reference.
 13. [导航到一个新页面和返回](https://flutter.cn/docs/cookbook/navigation/navigation-basics)
 14. [传递数据到新页面](https://flutter.cn/docs/cookbook/navigation/passing-data)
 15. [向应用添加闪屏页](https://flutter.cn/docs/development/ui/advanced/splash-screen)
+16. [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+17. [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+18. [online documentation](https://flutter.dev/docs)
