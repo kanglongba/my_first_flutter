@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_first_flutter/project/album_response.dart';
@@ -34,7 +35,9 @@ class AlbumState extends State<AlbumPage> {
         _loadMore();
       }
     };
-    _controller = ScrollController()..addListener(_scrollListener2);
+    _controller = ScrollController()
+      ..addListener(_scrollListener1);
+      // ..addListener(_scrollListener2);
     _refresh();
   }
 
@@ -49,7 +52,9 @@ class AlbumState extends State<AlbumPage> {
   @override
   void dispose() {
     super.dispose();
-    _controller.removeListener(_scrollListener1);
+    _controller
+      ..removeListener(_scrollListener1)
+      ..removeListener(_scrollListener2);
   }
 
   @override
@@ -62,7 +67,7 @@ class AlbumState extends State<AlbumPage> {
         child: createBodyWidget(),
         onRefresh: _refresh,
         //指示器显示时距顶部位置
-        displacement: 20,
+        displacement: 5,
         //指示器颜色，默认ThemeData.accentColor
         color: Colors.white,
         //指示器背景颜色，默认ThemeData.canvasColor
@@ -180,6 +185,17 @@ class AlbumState extends State<AlbumPage> {
     );
   }
 
+  /// 过滤列表
+  /// 1.[Dart数组(List)基本属性与操作笔记](https://juejin.cn/post/6844904190129471502)
+  /// 2.[Dart -- List](https://www.jianshu.com/p/a296353d8c93)
+  void filterList(List<Photo> photos) {
+    photos.retainWhere((element) {
+      return photoList.every((photo) {
+        return photo.setid != element.setid;
+      });
+    });
+  }
+
   Future<void> _loadMore() async {
     if (status == ALBUM_STATUS_TYPE.noMorePhoto) {
       return;
@@ -187,11 +203,16 @@ class AlbumState extends State<AlbumPage> {
     setState(() {
       status = ALBUM_STATUS_TYPE.loadingMore;
     });
+    if (kDebugMode) {
+      print("pageIndex=$pageIndex");
+    }
     AlbumResponse response = await fetchAlbum(page: pageIndex);
     setState(() {
       if (response.code == 1) {
         if (response.data != null && response.data!.isNotEmpty) {
           pageIndex++;
+          //接口返回的重复数据太多，需要过滤。根据Photo.setid字段过滤。
+          filterList(response.data!);
           photoList.addAll(response.data!);
           status = ALBUM_STATUS_TYPE.loadMoreOK;
         } else {
