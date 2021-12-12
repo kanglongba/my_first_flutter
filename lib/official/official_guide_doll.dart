@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+class BeautifulGirlDetailPage extends StatelessWidget {
+  const BeautifulGirlDetailPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('玩偶姐姐'),
+      ),
+      body: const BeautifulGirlDetailWidget(),
+    );
+  }
+}
+
 /// 指导：https://flutter.cn/docs/development/ui/layout/tutorial
 /// 指导：https://flutter.cn/docs/development/ui/interactive
 class BeautifulGirlDetailWidget extends StatelessWidget {

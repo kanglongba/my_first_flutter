@@ -7,7 +7,6 @@ import 'package:my_first_flutter/guide/my_guide_page_linearlayout.dart';
 import 'package:my_first_flutter/guide/my_guide_page_list.dart';
 import 'package:my_first_flutter/guide/my_guide_page_relativeLayout.dart';
 import 'package:my_first_flutter/my_layout_page.dart';
-import 'package:my_first_flutter/official/official_guide_page.dart';
 import 'package:my_first_flutter/photo/photo_list_page.dart';
 
 import 'burhanrashid/red_flag.dart';
@@ -17,6 +16,7 @@ import 'guide/my_guide_page_navigate.dart';
 import 'home/app_home_page.dart';
 import 'official/official_guide_cake_evaluate.dart';
 import 'official/official_guide_demo.dart';
+import 'official/official_guide_doll.dart';
 import 'official/official_guide_girl_db.dart';
 import 'official/official_guide_girl_gallery.dart';
 import 'official/official_guide_tapbox.dart';
@@ -93,7 +93,6 @@ class MyApp extends StatelessWidget {
         '/frameLayoutLike': (context) => AndroidFrameLayoutLikePage(),
         '/albumPage': (context) => AlbumPage(),
         '/wallPaperPage': (context) => const WallPaperPage(),
-        '/officialGuidePage': (context) => const OfficialGuidePage(),
         '/tutorialPage': (context) => const TutorialHome(),
         '/counter': (context) => const Counter(),
         '/cart': (context) => ShoppingCartPage(),

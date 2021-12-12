@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:my_first_flutter/official/official_guide_model.dart';
 
-import 'custom_my_widget.dart';
+import 'official_guide_custom_my_widget.dart';
 import 'official_guide_utils.dart';
 
 /// 图片长廊：https://flutter.cn/docs/development/ui/layout

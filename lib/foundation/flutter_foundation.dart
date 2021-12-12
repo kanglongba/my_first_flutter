@@ -135,7 +135,7 @@ class FlutterFoundationWidget extends StatelessWidget {
     );
   }
 
-  /// 如果没注册路由，也可以这么跳转：lib/official/custom_my_widget.dart:301
+  /// 如果没注册路由，也可以这么跳转：lib/official/official_guide_custom_my_widget.dart:301
   void navigateToWebViewPage(BuildContext context, FoundationPageData data) {
     Navigator.pushNamed(
       context,

@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_first_flutter/official/custom_my_widget.dart';
+import 'package:my_first_flutter/official/official_guide_custom_my_widget.dart';
 
 import 'official_guide_model.dart';
-import 'official_guide_practice.dart';
 
 class TutorialHome extends StatelessWidget {
   const TutorialHome({Key? key}) : super(key: key);
@@ -12,35 +10,21 @@ class TutorialHome extends StatelessWidget {
   Widget build(BuildContext context) {
     // Scaffold is a layout for
     // the major Material Components.
-    return Scaffold(
-      appBar: AppBar(
-        leading: const IconButton(
-          icon: Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: null,
-        ),
-        title: const Text('官方Scaffold'),
-        actions: const [
-          IconButton(
-            icon: Icon(Icons.search),
-            tooltip: 'Search',
-            onPressed: null,
+    return const SafeArea(
+      child: MyScaffold(
+        title: '自定义Widget',
+        body: Center(
+          child: Text(
+            '使用自定义的AppBar和Scaffold构建页面',
+            style: TextStyle(fontSize: 20),
           ),
-        ],
-      ),
-      // body is the majority of the screen.
-      body: const Center(
-        child: Text('Official Scaffold Page Demo'),
-      ),
-      floatingActionButton: const FloatingActionButton(
-        tooltip: 'Add', // used by assistive technologies
-        child: Icon(Icons.add),
-        onPressed: null,
+        ),
       ),
     );
   }
 }
 
+/// 计数器
 class CounterDisplay extends StatelessWidget {
   final int count;
 
@@ -113,7 +97,7 @@ class _CounterState extends State<Counter> {
   }
 }
 
-/// 封装
+/// 封装 - 购物车
 class ShoppingListItem extends StatelessWidget {
   final Product product;
   final bool inCart;
@@ -244,6 +228,7 @@ class ShoppingCartState extends State<ShoppingCartPage> {
   }
 }
 
+/// 名片
 class MyBusinessCardPage extends StatelessWidget {
   const MyBusinessCardPage({Key? key}) : super(key: key);
 
@@ -263,20 +248,6 @@ class MyBusinessCardPage extends StatelessWidget {
           avatar: 'assets/images/girl18.jpeg',
         )),
       ),
-    );
-  }
-}
-
-class BeautifulGirlDetailPage extends StatelessWidget {
-  const BeautifulGirlDetailPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('玩偶姐姐'),
-      ),
-      body: const BeautifulGirlDetailWidget(),
     );
   }
 }
