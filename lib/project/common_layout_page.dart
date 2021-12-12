@@ -185,7 +185,7 @@ class PaddingLayoutPage extends StatelessWidget {
             Container(
               color: Colors.indigoAccent,
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 90, horizontal: 40),
+                padding: EdgeInsets.symmetric(vertical: 25, horizontal: 40),
                 child: Container(
                   color: Colors.red,
                   width: double.infinity,

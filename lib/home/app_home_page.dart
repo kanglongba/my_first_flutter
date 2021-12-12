@@ -76,7 +76,9 @@ class AppHomeState extends State<AppHomePage> {
                 style: TextStyle(fontSize: 15),
               ),
               subtitle: const Text("废弃的、不方便归类的demo"),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, "/ashcanPage");
+              },
             ),
             ListTile(
               leading: const Icon(

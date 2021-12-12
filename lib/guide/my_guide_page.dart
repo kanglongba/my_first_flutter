@@ -154,7 +154,7 @@ class MyInteractionState extends State<MyInteractionPage> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Center(
-            heightFactor: 3,
+            heightFactor: 1.5,
             child: Text(
               _msg,
               style: const TextStyle(
@@ -174,7 +174,7 @@ class MyInteractionState extends State<MyInteractionPage> {
               },
               child: const Text("Button交互", style: TextStyle(fontSize: 20.0))),
           Center(
-            heightFactor: 3,
+            heightFactor: 1.5,
             child: Text(
               "看我七十二变",
               style: TextStyle(
@@ -206,7 +206,7 @@ class MyInteractionState extends State<MyInteractionPage> {
             ),
           ),
           Center(
-            heightFactor: 3,
+            heightFactor: 1.5,
             child: Text(
               "看我七十二变",
               style: TextStyle(
@@ -238,129 +238,6 @@ class MyInteractionState extends State<MyInteractionPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MyHomePage2 extends StatefulWidget {
-  const MyHomePage2({Key? key}) : super(key: key);
-
-  @override
-  MyHomePage2State createState() {
-    return MyHomePage2State();
-  }
-}
-
-class MyHomePage2State extends State<MyHomePage2> {
-  var msg = 'Hellow World';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('我是Title'),
-      ),
-      body: Center(
-        child: ListView(
-          children: <Widget>[
-            Text(msg),
-            FlatButton(
-                color: Colors.blue,
-                textColor: Colors.white,
-                onPressed: () {
-                  setState(() {
-                    msg = 'You clicked ME ${DateTime.now().millisecond}';
-                  });
-                },
-                child:
-                    const Text("click ME", style: TextStyle(fontSize: 20.0))),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const MySimpleListPage();
-                  }));
-                },
-                child: const Text('Jump to ListPage')),
-            RaisedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/emptypage');
-                },
-                child: const Text('Jump to EmptyPage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/d');
-                },
-                child: const Text('Jump to MyHomePage1')),
-            MaterialButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/c');
-              },
-              child: const Text('Jump to MyHomePage'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/a');
-              },
-              child: const Text('Jump to MyPage A'),
-            ),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/b');
-                },
-                child: const Text('Jump to MyPage B')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/imagepage');
-                },
-                child: const Text('Jump to NetWorkImagePage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/localimagepage');
-                },
-                child: const Text('Jump to LocalImagePage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/layoutPage');
-                },
-                child: const Text('Jump to MyLayoutPage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/animatePage');
-                },
-                child: const Text('Jump to AnimatePage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/activityLike');
-                },
-                child: const Text('Jump to ActivityLikePage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/linearLayoutLike');
-                },
-                child: const Text('Jump to LinearLayoutLikePage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/frameLayoutLike');
-                },
-                child: const Text('Jump to FrameLayoutLikePage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/redFlagPage');
-                },
-                child: const Text('Jump to redFlagPage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/albumPage');
-                },
-                child: const Text('Jump to AlbumPage')),
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/wallPaperPage');
-                },
-                child: const Text('Jump to WallPaperPage')),
-          ],
-        ),
       ),
     );
   }

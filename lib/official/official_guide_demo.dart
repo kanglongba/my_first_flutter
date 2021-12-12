@@ -251,8 +251,3 @@ class MyBusinessCardPage extends StatelessWidget {
     );
   }
 }
-
-//todo
-//6.继续创建我的相册demo，加入喜欢功能和跳转详情功能，图片tab滑动功能。
-//7.整理我的demo
-//8.https://momoyu.cc/   用这个api写一个app

@@ -9,6 +9,7 @@ import 'package:my_first_flutter/guide/my_guide_page_relativeLayout.dart';
 import 'package:my_first_flutter/project/album_wallPaper_page.dart';
 import 'package:my_first_flutter/project/common_layout_page.dart';
 
+import 'ashcan/flutter_ashcan.dart';
 import 'foundation/foundation_webview_page.dart';
 import 'guide/my_guide_page_image.dart';
 import 'guide/my_guide_page_navigate.dart';
@@ -109,6 +110,7 @@ class MyApp extends StatelessWidget {
         '/redFlagPage': (context) => const RedFlagPage(),
         '/foundationWebViewPage': (context) => const FoundationWebViewPage(),
         '/appHomePage': (context) => const AppHomePage(),
+        '/ashcanPage': (context) => const MyAshcanPage(),
       },
     );
   }
