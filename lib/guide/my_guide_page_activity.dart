@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 /// 系列Github：https://github.com/burhanrashid52/FlutterForAndroidExample/tree/master/lib
-class AndroidActivityLikePage extends StatelessWidget {
+class AndroidActivityLikePage extends StatefulWidget {
   const AndroidActivityLikePage({Key? key}) : super(key: key);
+
+  @override
+  State createState() {
+    return AndroidActivityLikeState();
+  }
+}
+
+class AndroidActivityLikeState extends State<AndroidActivityLikePage> {
+  int _selectedPage = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: const Text('创建Activity UI'),
         actions: [
           IconButton(
@@ -74,6 +82,14 @@ class AndroidActivityLikePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            _selectedPage = index;
+          });
+        },
+        currentIndex: _selectedPage,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search')
@@ -86,9 +102,29 @@ class AndroidActivityLikePage extends StatelessWidget {
         },
       ),
       body: Container(
-        color: Colors.red,
+        margin: const EdgeInsets.all(15),
+        color: Colors.orange,
+        child: getWidget(),
       ),
-      backgroundColor: Colors.yellowAccent,
+      backgroundColor: Colors.deepPurpleAccent,
     );
+  }
+
+  Widget getWidget() {
+    if (_selectedPage == 0) {
+      return const Center(
+        child: Text(
+          '在Flutter中构建Android中Activity样式的页面:Home',
+          style: TextStyle(color: Colors.white, fontSize: 15),
+        ),
+      );
+    } else {
+      return const Center(
+        child: Text(
+          '在Flutter中构建Android中Activity样式的页面:Search',
+          style: TextStyle(color: Colors.white, fontSize: 15),
+        ),
+      );
+    }
   }
 }

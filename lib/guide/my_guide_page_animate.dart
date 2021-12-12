@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
-class AnimatePage extends StatefulWidget {
+class MyAnimatePage extends StatefulWidget {
+  const MyAnimatePage({Key? key}) : super(key: key);
+
   @override
   State createState() {
-    return AnimatePageState();
+    return MyAnimatePageState();
   }
 }
 
-class AnimatePageState extends State<AnimatePage> {
+class MyAnimatePageState extends State<MyAnimatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AnimatePage'),
+        title: const Text('Flutter中的动画'),
       ),
-      body: Center(
-        child: Column(
+      body: GridView.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
           children: <Widget>[
             OutlinedButton(
                 onPressed: () {
@@ -26,15 +30,21 @@ class AnimatePageState extends State<AnimatePage> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/scalePage');
                 },
-                child: const Text('ScaleAnimation'))
-          ],
-        ),
-      ),
+                child: const Text('ScaleAnimation')),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/emptypage');
+              },
+              child: const Text('Transform'),
+            ),
+          ]),
     );
   }
 }
 
 class AlphaAnimation extends StatefulWidget {
+  const AlphaAnimation({Key? key}) : super(key: key);
+
   @override
   State createState() {
     return _AlphaAnimationState();
@@ -48,7 +58,7 @@ class _AlphaAnimationState extends State<AlphaAnimation> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('AlphaAnimation'),
+          title: const Text('AlphaAnimation'),
         ),
         body: Center(
           child: Column(
@@ -83,6 +93,8 @@ class _AlphaAnimationState extends State<AlphaAnimation> {
  * Curve：设置动画使用曲线变化，如非匀速动画，先加速，后减速等的设定。
  */
 class ScaleAnimation extends StatefulWidget {
+  const ScaleAnimation({Key? key}) : super(key: key);
+
   @override
   State createState() {
     return _ScaleAnimationState();
@@ -142,5 +154,30 @@ class _ScaleAnimationState extends State<ScaleAnimation>
     //路由销毁时需要释放动画资源
     controller.dispose();
     super.dispose();
+  }
+}
+
+class MyTransformPage extends StatelessWidget {
+  const MyTransformPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('静态Transform'),
+      ),
+      body: Center(
+        child: Container(
+          color: Colors.blue,
+          width: 200,
+          height: 200,
+          padding: const EdgeInsets.all(30),
+          margin: const EdgeInsets.only(left: 50, top: 0, right: 0, bottom: 0),
+          child: const Text("Hello Transform",
+              style: TextStyle(fontSize: 20, color: Colors.white)),
+          transform: Matrix4.rotationZ(0.5),
+        ),
+      ),
+    );
   }
 }

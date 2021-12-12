@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_first_flutter/foundation/flutter_foundation.dart';
+import 'package:my_first_flutter/guide/flutter_guide.dart';
 
 class AppHomePage extends StatefulWidget {
   const AppHomePage({Key? key}) : super(key: key);
@@ -119,6 +120,8 @@ class AppHomeState extends State<AppHomePage> {
     switch (_selectedIndex) {
       case 0:
         return const FlutterFoundationWidget();
+      case 1:
+        return const FlutterGuideWidget();
       default:
         return const FlutterFoundationWidget();
     }

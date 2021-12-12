@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 class AndroidFrameLayoutLikePage extends StatelessWidget {
+  const AndroidFrameLayoutLikePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FrameLayout Page'),
+        title: const Text(
+          'Stack就是Flutter中的RelativeLayout',
+          style: TextStyle(fontSize: 15),
+        ),
       ),
       body: Container(
         constraints: const BoxConstraints.expand(),
-        color: Colors.tealAccent,
         child: ListView(
           children: [
             Stack(
@@ -37,6 +41,11 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
                 ),
               ],
             ),
+            Container(
+              color: Colors.grey,
+              height: 2,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+            ),
             Stack(
               alignment: AlignmentDirectional.center,
               children: [
@@ -61,6 +70,11 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
                   color: Colors.yellow,
                 ),
               ],
+            ),
+            Container(
+              color: Colors.grey,
+              height: 2,
+              margin: const EdgeInsets.symmetric(vertical: 5),
             ),
             Stack(
               alignment: AlignmentDirectional.bottomEnd,
@@ -88,6 +102,11 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
               ],
             ),
             Container(
+              color: Colors.grey,
+              height: 2,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+            ),
+            Container(
               width: double.infinity, // 宽度撑满
               height: 400,
               margin: const EdgeInsets.all(5),
@@ -99,8 +118,8 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
                       width: 200.0,
                       color: Colors.red,
                     ),
-                    alignment: AlignmentDirectional
-                        .topStart, // 相当于 Android 中的 layout_gravity，需要用 Align 包裹子Widget
+                    // 相当于 Android 中的 layout_gravity，需要用 Align 包裹子Widget
+                    alignment: AlignmentDirectional.topStart,
                   ),
                   Align(
                     child: Container(
@@ -130,6 +149,11 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
               ),
             ),
             Container(
+              color: Colors.grey,
+              height: 2,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+            ),
+            Container(
               width: double.infinity, // 宽度撑满
               height: 400,
               margin: const EdgeInsets.all(5),
@@ -141,6 +165,7 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
                       width: 200.0,
                       color: Colors.red,
                     ),
+                    // 相当于 RelativeLayout 中的 位置参数，需要用 Positioned 包裹子Widget
                     top: 10.0, // 相对于父布局的位置
                     left: 10.0, // 相对于父布局的位置
                   ),
@@ -173,7 +198,12 @@ class AndroidFrameLayoutLikePage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            Container(
+              color: Colors.grey,
+              height: 2,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+            ),
           ],
         ),
       ),

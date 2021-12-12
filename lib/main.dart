@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:my_first_flutter/burhanrashid/android_activity_like.dart';
-import 'package:my_first_flutter/burhanrashid/android_framelayout_like.dart';
-import 'package:my_first_flutter/burhanrashid/android_linearlayout_like.dart';
-import 'package:my_first_flutter/list_page.dart';
-import 'package:my_first_flutter/my_animate_page.dart';
-import 'package:my_first_flutter/my_home_page.dart';
+import 'package:my_first_flutter/guide/my_guide_page.dart';
+import 'package:my_first_flutter/guide/my_guide_page_activity.dart';
+import 'package:my_first_flutter/guide/my_guide_page_animate.dart';
+import 'package:my_first_flutter/guide/my_guide_page_linearlayout.dart';
+import 'package:my_first_flutter/guide/my_guide_page_list.dart';
+import 'package:my_first_flutter/guide/my_guide_page_relativeLayout.dart';
 import 'package:my_first_flutter/my_layout_page.dart';
 import 'package:my_first_flutter/official/official_guide_page.dart';
 import 'package:my_first_flutter/photo/photo_list_page.dart';
 
 import 'burhanrashid/red_flag.dart';
 import 'foundation/foundation_webview_page.dart';
+import 'guide/my_guide_page_image.dart';
+import 'guide/my_guide_page_navigate.dart';
 import 'home/app_home_page.dart';
 import 'official/official_guide_cake_evaluate.dart';
 import 'official/official_guide_demo.dart';
@@ -51,17 +53,20 @@ class MyApp extends StatelessWidget {
       ),
       home: const AppHomePage(),
       routes: <String, WidgetBuilder>{
-        '/a': (BuildContext context) => MyPage(title: 'page A'),
-        '/b': (BuildContext context) => MyPage(title: 'page B'),
-        '/c': (BuildContext context) => const MyHomePage(title: 'MyHomePage'),
-        '/d': (BuildContext context) => const MyHomePage1(),
-        '/imagepage': (BuildContext context) => ImagePage(),
-        '/localimagepage': (BuildContext context) => LocalImagePage(),
+        '/a': (BuildContext context) => MySimplePage(title: 'page A'),
+        '/b': (BuildContext context) => MySimplePage(title: 'page B'),
+        '/c': (BuildContext context) =>
+            const MyStatefulPage(title: '有状态Widget'),
+        '/d': (BuildContext context) => const MyStatelessPage(),
+        '/e': (BuildContext context) => const MyInteractionPage(),
+        '/myRouteJumpPage': (BuildContext context) => const MyRouteJumpPage(),
+        '/imagepage': (BuildContext context) => const NetworkImagePage(),
+        '/localimagepage': (BuildContext context) => const LocalImagePage(),
         '/emptypage': (BuildContext context) {
-          return EmptyPage();
+          return MyTransformPage();
         },
         '/detail': (context) {
-          return DetailPage();
+          return const MySimpleDetailPage();
         },
         '/column': (context) => ColumnLayoutPage(),
         '/center': (context) => CenterLayoutPage(),
@@ -80,7 +85,7 @@ class MyApp extends StatelessWidget {
         '/sizedboxPage': (context) => SizedBoxLayoutPage(),
         '/flexiblePage': (context) => FlexiblePageLayout(),
         '/cardPage': (context) => CardPageLayout(),
-        '/animatePage': (context) => AnimatePage(),
+        '/animatePage': (context) => const MyAnimatePage(),
         '/alphaPage': (context) => AlphaAnimation(),
         '/scalePage': (context) => ScaleAnimation(),
         '/activityLike': (context) => const AndroidActivityLikePage(),
