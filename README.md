@@ -17,6 +17,18 @@
 * 自定义组件
 * 自绘组件
 
+## App内容展示
+1.![首页](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193617.png)
+2.![入门](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193652.png)
+3.![练习](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193718.png)
+4.![实践](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193745.png)
+5.![常用布局](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193808.png)
+6.![个人主页](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193846.png)
+7.![名片](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193919.png)
+8.![长廊](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-193942.png)
+9.![网络相册](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-194041.png)
+10.![抽屉](https://github.com/kanglongba/my_first_flutter/blob/master/raw/device-2022-02-26-194127.png)
+
 ## Todo
 
 1. 实践Android工程嵌入Flutter开发
