@@ -114,6 +114,16 @@ class MyLayoutPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/listViewPage');
               },
               child: Text('列表布局 - ListView')),
+          OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/decoratedBoxPage');
+              },
+              child: const Text('装饰容器 - DecoratedBox')),
+          OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/transformPage');
+              },
+              child: const Text('变换容器 - Transform')),
         ],
       ),
     );
@@ -541,6 +551,7 @@ class AspectRatioLayoutPage extends StatelessWidget {
   }
 }
 
+/// 容器布局，同时包含了DecoratedBox和Transform的能力
 class ContainerLayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -550,18 +561,19 @@ class ContainerLayoutPage extends StatelessWidget {
       ),
       body: Container(
         alignment: Alignment.topLeft,
-        color: Colors.amber,
-        constraints: BoxConstraints.expand(),
+        color: Colors.deepOrangeAccent,
+        constraints: const BoxConstraints.expand(),
         child: Container(
           //child对齐方式
           alignment: Alignment.bottomRight,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           //背景色，不能和decoration同时使用
           //color: Colors.lightBlue,
-          //装饰，修饰Container自己。不会改变大小，只是装装样子
+          //装饰盒，修饰Container自己。不会改变大小，只是装装样子
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.orange,
+            //这里用的是非线性变化
             gradient: RadialGradient(
               colors: [Colors.green, Colors.lightBlue],
               center: Alignment.center,
@@ -569,12 +581,12 @@ class ContainerLayoutPage extends StatelessWidget {
             ),
           ),
           //约束盒，约束Container的大小，比width和height的优先级更高
-          constraints: BoxConstraints.loose(Size.fromRadius(120)),
+          constraints: BoxConstraints.loose(const Size.fromRadius(120)),
           //Container的宽度
           width: 300,
           //Container的高度
           height: 500,
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           //容器变换
           transform: Matrix4.rotationX(0.5),
           child: const Text('容器布局'),
@@ -922,5 +934,165 @@ class ListViewPage extends StatelessWidget {
               },
               itemCount: 36),
         ));
+  }
+}
+
+///装饰容器，可以在其子组件绘制前(或后)绘制一些装饰(Decoration)，如背景、边框、渐变等
+///它的参数 this.decoration 要求传入抽象类Decoration，常用其子类BoxDecoration。
+///装饰盒（BoxDecoration）包含了一系列装饰属性，包括：颜色，图片，边框，圆角，阴影，渐变，形状，背景混合模式
+class DecoratedBoxLayoutPage extends StatelessWidget {
+  const DecoratedBoxLayoutPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "装饰容器 - DecoratedBox",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+          ),
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(10),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              //边框
+              border: Border.all(width: 2, color: Colors.amberAccent),
+              // 线性颜色渐变
+              gradient: const LinearGradient(
+                colors: [Colors.blue, Colors.orangeAccent],
+              ),
+              // 圆角
+              borderRadius: BorderRadius.circular(5.0),
+              // 阴影
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black54,
+                    offset: Offset(2.0, 2.0),
+                    blurRadius: 4.0),
+              ]),
+          //background，背景；foreground，前景
+          position: DecorationPosition.background,
+          child: const Center(
+            widthFactor: 2,
+            heightFactor: 2,
+            child: Text(
+              "2022-02-26 飞猪大裁员",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.normal,
+                fontFamily: 'Roboto',
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+///Transform可以在其子组件绘制时对其应用一些矩阵变换来实现一些特效
+///Transform的变换是应用在绘制阶段，而并不是应用在布局(layout)阶段，所以无论对子组件应用何种变化，其占用空间的大
+///小和在屏幕上的位置都是固定不变的，因为这些是在布局阶段就确定的。
+class TransformLayoutPage extends StatelessWidget {
+  const TransformLayoutPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "变换容器 - Transform",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Roboto',
+          ),
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 50,),
+            DecoratedBox(
+              decoration: const BoxDecoration(color: Colors.orange),
+              position: DecorationPosition.background,
+              child: Transform(
+                alignment: Alignment.bottomRight,
+                origin: Offset.zero,
+                transform: Matrix4.skewY(0.3),
+                child: const Center(
+                  widthFactor: 2,
+                  heightFactor: 2,
+                  child: Text("Transform - 倾斜", style: TextStyle(fontSize: 20),),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40,),
+            DecoratedBox(
+              decoration: const BoxDecoration(color: Colors.lightBlueAccent),
+              position: DecorationPosition.background,
+              child: Transform.translate(
+                offset: const Offset(-50.0, -30.0), // dx控制水平方向偏移，dy控制垂直方向偏移
+                child: const Center(
+                  widthFactor: 2,
+                  heightFactor: 2,
+                  child: Text(
+                    "Transform - 平移",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40,),
+            DecoratedBox(
+              decoration: const BoxDecoration(color: Colors.lightGreenAccent),
+              position: DecorationPosition.background,
+              child: Transform.rotate(
+                angle: 180, // 旋转角度
+                child: const Center(
+                  widthFactor: 2,
+                  heightFactor: 2,
+                  child: Text(
+                    "Transform - 旋转",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40,),
+            DecoratedBox(
+              decoration: const BoxDecoration(color: Colors.redAccent),
+              position: DecorationPosition.background,
+              child: Transform.scale(
+                scale: 1.5, // 缩放倍数
+                child: const Center(
+                  widthFactor: 2,
+                  heightFactor: 2,
+                  child: Text(
+                    "Transform - 缩放",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -111,6 +111,8 @@ class MyApp extends StatelessWidget {
         '/foundationWebViewPage': (context) => const FoundationWebViewPage(),
         '/appHomePage': (context) => const AppHomePage(),
         '/ashcanPage': (context) => const MyAshcanPage(),
+        '/decoratedBoxPage': (context) => const DecoratedBoxLayoutPage(),
+        '/transformPage': (context) => const TransformLayoutPage(),
       },
     );
   }
