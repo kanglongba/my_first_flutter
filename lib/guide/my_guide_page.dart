@@ -163,10 +163,15 @@ class MyInteractionState extends State<MyInteractionPage> {
               ),
             ),
           ),
-          FlatButton(
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-              color: Colors.blue,
-              textColor: Colors.white,
+          TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white, shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                ),
+                minimumSize: Size(80, 15),
+                backgroundColor: Colors.blue,
+                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+              ),
               onPressed: () {
                 setState(() {
                   _msg = '看我七十二变: ${DateTime.now().millisecond}';

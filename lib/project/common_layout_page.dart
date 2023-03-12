@@ -492,7 +492,7 @@ class _IndexedStackLayoutPageState extends State<IndexedStackLayoutPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           child: Text('1'),
           onPressed: () {
             setState(() {
@@ -500,7 +500,7 @@ class _IndexedStackLayoutPageState extends State<IndexedStackLayoutPage> {
             });
           },
         ),
-        RaisedButton(
+        ElevatedButton(
           child: Text('2'),
           onPressed: () {
             setState(() {
@@ -508,7 +508,7 @@ class _IndexedStackLayoutPageState extends State<IndexedStackLayoutPage> {
             });
           },
         ),
-        RaisedButton(
+        ElevatedButton(
           child: Text('3'),
           onPressed: () {
             setState(() {
